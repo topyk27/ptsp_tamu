@@ -34,7 +34,14 @@ $db['sipp'] = array(
 username : admin
 password : iniadmin
 ```
-9. Lakukan pengaturan browser dengan mengizinkan penggunaan kamera untuk mengambil gambar pihak yang berkunjung ke PTSP. Cara [Izin Kamera.](https://support.google.com/chrome/answer/2693767)
+9. Lakukan pengaturan browser dengan mengizinkan penggunaan kamera untuk mengambil gambar pihak yang berkunjung ke PTSP. Cara [Izin Kamera.](https://support.google.com/chrome/answer/2693767). Apabila server tidak menggunakan https silahkan masukkan alamat ini pada browser chrome anda. Untuk pengguna browser lain bisa dicari di google untuk caranya.
+```
+chrome://flags/#unsafely-treat-insecure-origin-as-secure
+```
+10. Masukkan alamat server anda di kotak `Insecure origins treated as secure` setelah itu pilih dropdown di sebelahnya menjadi Enabled.
+![alt text](https://github.com/topyk27/ptsp_tamu/blob/main/asset/img/img-1.png?raw=true)
+11. Kemudian apabila muncul gambar seperti di bawah ini, silahkan pilih Allow.
+![alt text](https://github.com/topyk27/ptsp_tamu/blob/main/asset/img/img-2.png?raw=true)
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
