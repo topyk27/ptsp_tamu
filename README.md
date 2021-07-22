@@ -39,7 +39,9 @@ password : iniadmin
 chrome://flags/#unsafely-treat-insecure-origin-as-secure
 ```
 10. Masukkan alamat server anda di kotak `Insecure origins treated as secure` setelah itu pilih dropdown di sebelahnya menjadi Enabled.
+![alt text](https://github.com/topyk27/ptsp_tamu/blob/main/asset/img/img-1.png?raw=true)
 11. Kemudian apabila muncul gambar seperti di bawah ini, silahkan pilih Allow.
+![alt text](https://github.com/topyk27/ptsp_tamu/blob/main/asset/img/img-2.png?raw=true)
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
