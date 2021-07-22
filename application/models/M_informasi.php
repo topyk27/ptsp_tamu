@@ -16,6 +16,7 @@ class M_informasi extends CI_Model
 	public $pekerjaan;
 	public $informasi;
 	public $keterangan;
+	public $foto;
 	public $diperbarui;
 
 	public function rules()
@@ -51,6 +52,41 @@ class M_informasi extends CI_Model
 			'label' => 'keterangan',
 			'rules' => 'required']
 		];
+	}
+
+	private function _base64upload($layanan, $img, $update)
+	{
+		$i=1;
+		$path = './upload/'.$layanan."/";
+		$img = str_replace('data:image/png;base64,', '', $img);
+		$img = str_replace(' ', '+', $img);
+		$data = base64_decode($img);
+		$file_name = $this->nama;
+		$file = $path.$file_name.'.png';
+		if(file_exists($file) && !$update)
+		{
+			while (file_exists($file)) {
+				$file = $path.$file_name.$i.'.png';
+				$nama_file_db = $file_name.$i.'.png';
+				$i++;
+			}
+		}
+		else
+		{
+			$nama_file_db = $file_name.'.png';
+		}
+		file_put_contents($file,$data);
+		return $nama_file_db;
+	}
+
+	private function _deleteImage($layanan, $id)
+	{
+		$informasi = $this->getById($id);
+		if($informasi->foto != "default.jpg")
+		{
+			$filename =  explode(".", $informasi->foto)[0];
+			return array_map('unlink', glob(FCPATH."upload/".$layanan."/".$filename.".*"));
+		}
 	}
 
 	public function getAll()
@@ -102,6 +138,12 @@ class M_informasi extends CI_Model
 		$this->pekerjaan = $post['pekerjaan'];
 		$this->informasi = $post['informasi'];
 		$this->keterangan = $post['keterangan'];
+		if($post['foto'] != "kosong")
+		{
+			
+			$this->foto = $this->_base64upload('informasi',$post['foto'],false);
+
+		}
 		$this->diperbarui = date('Y-m-d H:i:s');
 		$this->db->insert($this->table, $this);
 		return $this->db->affected_rows();
@@ -119,6 +161,15 @@ class M_informasi extends CI_Model
 		$this->pekerjaan = $post['pekerjaan'];
 		$this->informasi = $post['informasi'];
 		$this->keterangan = $post['keterangan'];
+		if($post['foto'] != "kosong")
+		{
+			$this->foto = $this->_base64upload('informasi',$post['foto'],true);
+
+		}
+		else
+		{
+			$this->foto = $post['old_foto'];
+		}
 		$this->db->update($this->table, $this, ['id' => $id]);
 		return $this->db->affected_rows();
 		// return $this->telepon;
@@ -126,6 +177,7 @@ class M_informasi extends CI_Model
 
 	public function delete($id)
 	{
+		$this->_deleteImage('informasi', $id);
 		return $this->db->delete($this->table, ["id" => $id]);
 	}
 

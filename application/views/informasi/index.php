@@ -10,6 +10,8 @@
   <!-- datatables -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/plugin/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/plugin/datatables-responsive/css/responsive.bootstrap4.min.css') ?>">
+  <!-- lightbox -->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/plugin/lightbox2/dist/css/lightbox.min.css'); ?>">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -76,33 +78,13 @@
                       <th>Pekerjaan</th>
                       <th>Informasi yang diminta</th>
                       <th>Keterangan</th>
+                      <th>Foto</th>
                       <th>Ubah</th>
                       <th>Hapus</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php //foreach($data_informasi as $informasi): ?>
-                      <!-- <tr>
-                        <td></td>
-                        <td><?php //echo $informasi->tanggal; ?></td>
-                        <td><?php //echo $informasi->nama; ?></td>
-                        <td><?php //echo $informasi->alamat; ?></td>
-                        <td><?php //echo $informasi->telepon; ?></td>
-                        <td><?php //echo $informasi->pekerjaan; ?></td>
-                        <td><?php //echo $informasi->informasi; ?></td>
-                        <td><?php //echo $informasi->keterangan; ?></td>
-                        <td>
-                          <a href="#" class="btn btn-app">
-                            <i class="fas fa-edit"></i>Ubah
-                          </a>
-                        </td>
-                        <td>
-                          <a href="#" class="btn btn-app">
-                            <i class="fas fa-trash"></i>Hapus
-                          </a>
-                        </td>
-                      </tr> -->
-                    <?php //endforeach; ?>
+                    
                   </tbody>
                 </table>
               </div>
@@ -174,6 +156,8 @@ $(document).ready(function () {
 <!-- Moment -->
 <script src="<?php echo base_url('asset/plugin/moment/moment-with-locales.min.js') ?>"></script>
 <script src="//cdn.datatables.net/plug-ins/1.10.21/sorting/datetime-moment.js"></script>
+<!-- lightbox -->
+<script src="<?php echo base_url('asset/plugin/lightbox2/dist/js/lightbox.min.js') ?>"></script>
 
 <script type="text/javascript">
   var path = window.location.pathname; //jadinya /ptsp_tamu/informasi
@@ -227,6 +211,9 @@ $(document).ready(function () {
       {"data" : "pekerjaan"},        
       {"data" : "informasi"},        
       {"data" : "keterangan"},
+      {"data" : null, "sortable" : false, render: function(data,type,row,meta){
+        return "<a href='<?php echo base_url('upload/informasi/')?>"+row['foto']+"' data-lightbox="+row['foto']+" data-title='"+row['nama']+"'><img src='<?php echo base_url('upload/informasi/')?>"+row['foto']+"' width='64' /></a>";
+      }},
       {"data" : null, "sortable" : false, render: function(data,type,row,meta){
         // return "<a href='#' class='btn btn-warning editButton'><i class='fas fa-edit'></i>Ubah</a>";
         return "<a href='<?php echo base_url('informasi/ubah/') ?>"+row['id']+"' class='btn btn-warning'><i class='fas fa-edit'></i>Ubah</a>";

@@ -101,6 +101,18 @@
                       <?php echo form_error('keterangan') ?>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label for="foto">Foto</label>
+                    <div class="camera">
+                      <video id="video">Video tidak tersedia</video>
+                      <button id="startbutton" class="btn btn-warning">Ambil foto</button>
+                      <canvas id="canvas" style="display: none;"></canvas>
+                      <div class="output">
+                        <img id="photo" alt="Gambar kamera akan muncul di kotak ini">
+                        <input type="hidden" class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>" name="foto" id="foto" >
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
@@ -164,6 +176,80 @@ $(document).ready(function () {
         autoclose: true,
       };
       date_input.datepicker(options);
+
+      // ambil gambar
+            var width = 720;
+            var height = 0;
+            var streaming = false;
+            var video = null;
+            var canvas = null;
+            var photo = null;
+            var startbutton = null;
+            var foto = null;
+            startup();
+
+            function startup()
+            {
+              video = document.getElementById('video');
+                canvas = document.getElementById('canvas');
+                photo = document.getElementById('photo');
+                startbutton = document.getElementById('startbutton');
+                foto = document.getElementById('foto');
+
+                navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch(function(err) {
+                    console.log("An error occurred: " + err);
+                });
+
+                video.addEventListener('canplay', function(ev){
+                  if (!streaming) {
+                    height = video.videoHeight / (video.videoWidth/width);
+
+                    video.setAttribute('width', width);
+                    video.setAttribute('height', height);
+                    canvas.setAttribute('width', width);
+                    canvas.setAttribute('height', height);
+                    streaming = true;
+                  }
+                }, false);
+
+                startbutton.addEventListener('click', function(ev){
+                    takepicture();
+                    ev.preventDefault();
+                  }, false);
+
+                  clearphoto();
+
+                  function clearphoto() {
+                   var context = canvas.getContext('2d');
+                   context.fillStyle = "#AAA";
+                   context.fillRect(0, 0, canvas.width, canvas.height);
+
+                   var data = canvas.toDataURL('image/png');
+                   photo.setAttribute('src', data);
+                   foto.setAttribute('value', 'kosong');
+                }
+
+                function takepicture() {
+                    var context = canvas.getContext('2d');
+                    if (width && height) {
+                      canvas.width = width;
+                      canvas.height = height;
+                      context.drawImage(video, 0, 0, width, height);
+
+                      var data = canvas.toDataURL('image/png');
+                      photo.setAttribute('src', data);
+                      foto.setAttribute('value', data);
+                    } else {
+                      clearphoto();
+                    }
+                }
+            }
+      // end ambil gambar
   });
 </script>
 </body>

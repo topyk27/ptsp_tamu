@@ -324,15 +324,15 @@ class M_produk extends CI_Model
 	{
 		if($pengambilan=='ac')
 		{
-			$statement = "SELECT id, nama, no_perkara, no_ac, pihak, no_hp, tanggal FROM produk WHERE pengambilan = '$pengambilan' ORDER BY tanggal ASC";
+			$statement = "SELECT id, nama, no_perkara, no_ac, pihak, no_hp, foto, tanggal FROM produk WHERE pengambilan = '$pengambilan' ORDER BY tanggal ASC";
 		}
 		else if($pengambilan=='putusan')
 		{
-			$statement = "SELECT id, nama, no_perkara, pihak, no_hp, tanggal FROM produk WHERE pengambilan = '$pengambilan' ORDER BY tanggal ASC";
+			$statement = "SELECT id, nama, no_perkara, pihak, no_hp, foto, tanggal FROM produk WHERE pengambilan = '$pengambilan' ORDER BY tanggal ASC";
 		}
 		else
 		{
-			$statement = "SELECT id, nama, no_perkara, no_hp, tanggal FROM produk WHERE pengambilan = '$pengambilan' ORDER BY tanggal ASC";
+			$statement = "SELECT id, nama, no_perkara, no_hp, foto, tanggal FROM produk WHERE pengambilan = '$pengambilan' ORDER BY tanggal ASC";
 		}
 		$query = $this->db->query($statement);
 		return $query->result();
@@ -350,7 +350,7 @@ class M_produk extends CI_Model
 		$post = $this->input->post();
 		$bulan = $post['bulan'];
 		$tahun = $post['tahun'];
-		$statement = "SELECT id, nama, no_perkara, no_ac, pihak, no_hp, tanggal FROM produk WHERE pengambilan = '$pengambilan' AND MONTH(tanggal)=$bulan AND YEAR(tanggal)=$tahun ORDER BY tanggal ASC";
+		$statement = "SELECT id, nama, no_perkara, no_ac, pihak, no_hp, foto, tanggal FROM produk WHERE pengambilan = '$pengambilan' AND MONTH(tanggal)=$bulan AND YEAR(tanggal)=$tahun ORDER BY tanggal ASC";
 		$query = $this->db->query($statement);
 		return $query->result();
 	}
