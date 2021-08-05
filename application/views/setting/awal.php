@@ -13,6 +13,9 @@
 	<!-- Theme style -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/dist/css/adminlte.min.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/mine/css/cpr.css') ?>">
+	<!-- loader -->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/mine/css/loader.css') ?>">
+	<!-- end loader -->
 </head>
 <body class="hold-transition login-page">
 	<div class="login-box">
@@ -62,6 +65,7 @@
 			</div>
 		</div>
 	</div>
+	<?php $this->load->view("_partials/loader.php") ?>
 	<!-- jQuery -->
 	<script src="<?php echo base_url('asset/js/jquery/jquery.min.js') ?>"></script>
 	<!-- Bootstrap 4 -->
@@ -99,11 +103,11 @@
 								title : 'Token gagal tersimpan.'
 							});
 						}
-						// loader dismiss
+						$(".loader2").hide();
 					},
 					error: function(err)
 					{
-						// loader dismiss
+						$(".loader2").hide();
 						Toast.fire({
 							icon : 'error',
 							title : 'Token gagal tersimpan, harap periksa koneksi internet anda.'
@@ -123,7 +127,7 @@
 					dataType: "json",
 					beforeSend: function()
 					{
-						// loader
+						$(".loader2").show();
 					},
 					success: function(data)
 					{
@@ -150,11 +154,11 @@
 								title : 'Verifikasi gagal, silahkan periksa kembali data yang anda masukkan.'
 							});
 						}
-						// loader dismiss
+						$(".loader2").hide();
 					},
 					error: function(err)
 					{
-						// console.log(err);
+						$(".loader2").hide();
 						Toast.fire({
 							icon : 'error',
 							title : 'Koneksi gagal, harap periksa jaringan internet anda atau hubungi administrator'

@@ -73,7 +73,7 @@
 			var nama_pa = "<?php echo $this->session->userdata("nama_pa"); ?>";
 			var nama_pa_pendek = "<?php echo $this->session->userdata("nama_pa_pendek"); ?>";
 			$.ajax({
-				url: "http://localhost/token-web.json",
+				url: "https://raw.githubusercontent.com/topyk27/ptsp_tamu/main/asset/mine/token/token.json",
 				method: 'GET',
 				dataType: 'json',
 				beforeSend: function(){
