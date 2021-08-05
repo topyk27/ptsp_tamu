@@ -66,5 +66,17 @@ class M_setting extends CI_Model
 		$query = $this->db->query($statement);
 		return $query->row();
 	}
+
+	public function savetoken()
+	{
+		$post = $this->input->post();
+		$token = $post['token'];
+		$nama_pa = $post['nama_pa'];
+		$nama_pa_pendek = $post['nama_pa_pendek'];
+		$this->db->truncate("setting");
+		$statement = "INSERT INTO setting (token, nama_pa, nama_pa_pendek) VALUES ('$token', '$nama_pa', '$nama_pa_pendek') ";
+		$this->db->query($statement);
+		return $this->db->affected_rows();
+	}
 }
  ?>

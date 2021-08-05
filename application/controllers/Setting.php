@@ -13,10 +13,6 @@ class Setting extends CI_Controller
 		$this->load->model("M_setting");
 		$this->load->model("M_user");
 		$this->load->library('form_validation');
-		if(!$this->M_user->isLogin())
-		{
-			redirect('user/login');
-		}
 	}
 
 	public function validate_username($str)
@@ -35,10 +31,18 @@ class Setting extends CI_Controller
 	public function user()
 	{
 		$this->load->view('user/index');
+		if(!$this->M_user->isLogin())
+		{
+			redirect('user/login');
+		}
 	}
 
 	public function user_tambah()
 	{
+		if(!$this->M_user->isLogin())
+		{
+			redirect('user/login');
+		}
 		$user = $this->M_user;
 		$validation = $this->form_validation;
 		$validation->set_rules($user->rules());
@@ -56,6 +60,11 @@ class Setting extends CI_Controller
 
 	public function user_ubah($id)
 	{
+		if(!$this->M_user->isLogin())
+		{
+			redirect('user/login');
+		}
+
 		if(!isset($id))
 		{
 			redirect('setting/user');
@@ -94,6 +103,11 @@ class Setting extends CI_Controller
 
 	public function user_hapus($id)
 	{
+		if(!$this->M_user->isLogin())
+		{
+			redirect('user/login');
+		}
+
 		if($this->M_user->hapus($id))
 		{
 			echo 1;
@@ -104,8 +118,23 @@ class Setting extends CI_Controller
 		}
 	}
 
+	public function awal()
+	{
+		$this->session->sess_destroy();
+		$this->load->view("setting/awal");
+	}
+
+	public function savetoken()
+	{
+		echo $this->M_setting->savetoken();
+	}
+
 	public function sistem()
 	{
+		if(!$this->M_user->isLogin())
+		{
+			redirect('user/login');
+		}
 		$data['ttd'] = $this->M_setting->getAll();
 		$data['hakim'] = $this->M_setting->list_hakim();
 		$data['panitera'] = $this->M_setting->list_panitera();

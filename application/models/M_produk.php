@@ -142,8 +142,9 @@ class M_produk extends CI_Model
 
 	public function insert($layanan)
 	{
-		$this->config->load('ptsp_config',TRUE);
-		$nama_pa_pendek = $this->config->item('nama_pa_pendek','ptsp_config');
+		// $this->config->load('ptsp_config',TRUE);
+		// $nama_pa_pendek = $this->config->item('nama_pa_pendek','ptsp_config');
+		$nama_pa_pendek = $this->session->userdata('nama_pa_pendek');
 		$post = $this->input->post();
 		$this->nama = $post['nama'];
 		// $replace0 = "/^0/";  // Regex
@@ -264,8 +265,9 @@ class M_produk extends CI_Model
 	{
 		// $data_perkara = array();
 		// $no_perkara = "695/Pdt.G/2020/PA.Tgr";
-		$this->config->load('ptsp_config',TRUE);
-		$nama_pa_pendek = $this->config->item('nama_pa_pendek','ptsp_config');
+		// $this->config->load('ptsp_config',TRUE);
+		// $nama_pa_pendek = $this->config->item('nama_pa_pendek','ptsp_config');
+		$nama_pa_pendek = $this->session->userdata('nama_pa_pendek');
 		$post = $this->input->post();
 		$no_perkara = $post['no']."/Pdt.G/".$post['tahun']."/".$nama_pa_pendek;
 		$db_sipp = $this->load->database('sipp', TRUE);
@@ -297,8 +299,9 @@ class M_produk extends CI_Model
 	{
 		$post = $this->input->post();
 		// $no_perkara = "695/Pdt.G/2020/PA.Tgr";
-		$this->config->load('ptsp_config',TRUE);
-		$nama_pa_pendek = $this->config->item('nama_pa_pendek','ptsp_config');
+		// $this->config->load('ptsp_config',TRUE);
+		// $nama_pa_pendek = $this->config->item('nama_pa_pendek','ptsp_config');
+		$nama_pa_pendek = $this->session->userdata('nama_pa_pendek');
 		$no_perkara = $post['no']."/Pdt.G/".$post['tahun']."/".$nama_pa_pendek;
 		$db_sipp = $this->load->database('sipp', TRUE);
 		$statement = "SELECT pihak1_text AS p, pihak2_text AS t FROM perkara WHERE nomor_perkara = '$no_perkara' ";
@@ -309,8 +312,9 @@ class M_produk extends CI_Model
 
 	public function cek_data_perkara_penetapan()
 	{
-		$this->config->load('ptsp_config',TRUE);
-		$nama_pa_pendek = $this->config->item('nama_pa_pendek','ptsp_config');
+		// $this->config->load('ptsp_config',TRUE);
+		// $nama_pa_pendek = $this->config->item('nama_pa_pendek','ptsp_config');
+		$nama_pa_pendek = $this->session->userdata('nama_pa_pendek');
 		$post = $this->input->post();
 		$no_perkara = $post['no']."/Pdt.P/".$post['tahun']."/".$nama_pa_pendek;
 		$db_sipp = $this->load->database('sipp', TRUE);

@@ -5,10 +5,7 @@
            alt="PTSP"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-           <?php 
-           $this->config->load('ptsp_config',TRUE);
-            ?>
-      <span class="brand-text font-weight-light">PA <?php echo $this->config->item('nama_pa','ptsp_config'); ?></span>
+      <span class="brand-text font-weight-light">PA <?php echo $this->session->userdata('nama_pa'); ?></span>
     </a>
 
     <!-- Sidebar -->

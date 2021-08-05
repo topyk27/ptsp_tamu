@@ -257,7 +257,12 @@ $(document).ready(function () {
 
     $("#dt_informasi tbody").on('click', 'tr .deleteButton', function(e){
       e.preventDefault();
-      var currentRow = $(this).closest("tr");
+      // var currentRow = $(this).closest("tr");
+      var currentRow = $(this).parents("tr");
+      if(currentRow.hasClass('child'))
+      {
+        currentRow = currentRow.prev();
+      }
       var data = $("#dt_informasi").DataTable().row(currentRow).data();
       $('#hapusModal').modal('show');
       $('#hapusModal').find('.modal-body').html("<p>Apakah anda ingin menghapus data "+data['nama']+"? Data ini tidak bisa dipulihkan kembali.");

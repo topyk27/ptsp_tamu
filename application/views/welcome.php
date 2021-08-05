@@ -17,9 +17,9 @@
 					<div class="row mb-2">
 						<div class="col-md-12">
 							<?php 
-							$this->config->load('ptsp_config',TRUE);
+							// $this->config->load('ptsp_config',TRUE);
 							 ?>
-							<h1>PTSP Pengadilan Agama <?php echo $this->config->item('nama_pa','ptsp_config'); ?></h1>
+							<h1>PTSP Pengadilan Agama <?php echo $this->session->userdata('nama_pa'); ?></h1>
 						</div>
 					</div>
 				</div>
@@ -44,6 +44,7 @@
 			</section>
 		</div>
 		<?php $this->load->view("_partials/footer.php") ?>
+		<?php $this->load->view("_partials/loader.php") ?>
 		<aside class="control-sidebar control-sidebar-dark"></aside>
 	</div>
 	<!-- jQuery -->
@@ -68,6 +69,60 @@
 		}
 
 		$(document).ready(function(){
+			var tkn = "<?php echo $this->session->userdata("ptsp_tamu_tkn"); ?>";
+			var nama_pa = "<?php echo $this->session->userdata("nama_pa"); ?>";
+			var nama_pa_pendek = "<?php echo $this->session->userdata("nama_pa_pendek"); ?>";
+			$.ajax({
+				url: "http://localhost/token-web.json",
+				method: 'GET',
+				dataType: 'json',
+				beforeSend: function(){
+					$(".loader2").show();
+				},
+				success: function(data)
+				{
+					try{
+						if(nama_pa==data[nama_pa_pendek][0].nama_pa && nama_pa_pendek==data[nama_pa_pendek][0].nama_pa_pendek && tkn==data[nama_pa_pendek][0].token)
+						{
+							
+						}
+						else
+						{
+							location.replace("<?php echo base_url('setting/awal'); ?>");
+						}
+					}
+					catch(err)
+					{
+						location.replace("<?php echo base_url('setting/awal'); ?>");
+					}
+					$(".loader2").hide();
+				},
+				error: function()
+				{
+					$.ajax({
+						url: "<?php echo base_url('asset/mine/token.json'); ?>",
+						method: "GET",
+						dataType: 'json',
+						success: function(lokal)
+						{
+							if(nama_pa==lokal[nama_pa_pendek][0].nama_pa && nama_pa_pendek==lokal[nama_pa_pendek][0].nama_pa_pendek && tkn==lokal[nama_pa_pendek][0].token)
+							{
+								
+							}
+							else
+							{
+								location.replace("<?php echo base_url('setting/awal'); ?>");
+							}
+							$(".loader2").hide();
+						},
+						error: function(err)
+						{
+							$(".loader2").hide();
+							alert('Gagal dapat data token, harap hubungi administrator');
+						}
+					});
+				}
+			});
 			$("#title_statistik").text("Statistik Pengunjung Bulan "+nama_bulan);
 			$("#sidebar_home").addClass("active");
 

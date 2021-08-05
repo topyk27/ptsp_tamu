@@ -15,3 +15,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/mine/css/cpr.css') ?>">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <!-- end hapus modal -->
+
+<!-- loader -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/mine/css/loader.css') ?>">
+<!-- end loader -->

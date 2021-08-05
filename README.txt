@@ -27,18 +27,17 @@ $db['sipp'] = array(
 	...
 );
 ```
-6. Buka file `application/config/ptsp_config` dan sesuaikan nama PA.
-7. Buka browser dan masukkan `IP SERVER/ptsp_tamu`.
-8. Data login
+6. Buka browser dan masukkan `IP SERVER/ptsp_tamu`.
+7. Data login
 ```
 username : admin
 password : iniadmin
 ```
-9. Lakukan pengaturan browser dengan mengizinkan penggunaan kamera untuk mengambil gambar pihak yang berkunjung ke PTSP. Cara [Izin Kamera.](https://support.google.com/chrome/answer/2693767). Apabila server tidak menggunakan https silahkan masukkan alamat ini pada browser chrome anda. Untuk pengguna browser lain bisa dicari di google untuk caranya.
+8. Lakukan pengaturan browser dengan mengizinkan penggunaan kamera untuk mengambil gambar pihak yang berkunjung ke PTSP. Cara [Izin Kamera.](https://support.google.com/chrome/answer/2693767). Apabila server tidak menggunakan https silahkan masukkan alamat ini pada browser chrome anda. Untuk pengguna browser lain bisa dicari di google untuk caranya.
 ```
 chrome://flags/#unsafely-treat-insecure-origin-as-secure
 ```
-10. Masukkan alamat server anda di kotak `Insecure origins treated as secure` setelah itu pilih dropdown di sebelahnya menjadi Enabled.
+9. Masukkan alamat server anda di kotak `Insecure origins treated as secure` setelah itu pilih dropdown di sebelahnya menjadi Enabled.
 ![alt text](https://github.com/topyk27/ptsp_tamu/blob/main/asset/img/img-1.png?raw=true)
 11. Kemudian apabila muncul gambar seperti di bawah ini, silahkan pilih Allow.
 ![alt text](https://github.com/topyk27/ptsp_tamu/blob/main/asset/img/img-2.png?raw=true)

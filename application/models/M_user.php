@@ -85,6 +85,7 @@ class M_user extends CI_Model
 		}
 		if($query->num_rows()==1)
 		{
+			$tkn = $this->tkn();
 			foreach($query->result() as $row)
 			{
 				$data = array(
@@ -95,14 +96,17 @@ class M_user extends CI_Model
 					'nama_layanan' => $row->nama_layanan,
 					'login' => true,
 					'cpr' => ucwords($anu),
+					'ptsp_tamu_tkn' => $tkn[0],
+					'nama_pa' => $tkn[1],
+					'nama_pa_pendek' => $tkn[2],
 				);
 			}
 			$this->session->set_userdata($data);
-			return 1;
+			return true;
 		}
 		else
 		{
-			return 0;
+			return false;
 		}
 	}
 
@@ -114,6 +118,29 @@ class M_user extends CI_Model
 			++$a;
 		}
 		return $a;
+	}
+
+	public function tkn()
+	{
+		$query = $this->db->get('setting');
+		$row = $query->row();
+		if(isset($row))
+		{
+			// return $data = array(
+			// 	'token' => $row->token,
+			// 	'nama_pa' => $row->nama_pa,
+			// 	'nama_pa_pendek' => $row->nama_pa_pendek,
+			// );
+			return $data = array(
+				$row->token,
+				$row->nama_pa,
+				$row->nama_pa_pendek,
+			);
+		}
+		else
+		{
+			false;
+		}
 	}
 
 	public function isLogin()

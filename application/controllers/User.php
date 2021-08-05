@@ -12,6 +12,21 @@ class User extends CI_Controller
 		$this->load->model("M_user");
 	}
 
+	public function aw()
+	{
+		$a = $this->M_user->tkn();
+		print_r($a);
+		if(empty($a))
+		{
+			echo "gak ada";
+		}
+		else
+		{
+			echo "ada";
+		}
+		print_r($this->session->userdata("ptsp_tamu_tkn"));
+	}
+
 	public function login()
 	{
 		$this->load->view('user/login');
@@ -29,7 +44,7 @@ class User extends CI_Controller
 		}
 		else
 		{
-			$this->session->set_flashdata('login', 'Username atau password salah.');
+			$this->session->set_flashdata('login_proses', 'Username atau password salah.');
 			redirect(base_url('user/login'));
 		}
 	}

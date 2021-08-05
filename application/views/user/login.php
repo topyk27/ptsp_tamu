@@ -73,7 +73,7 @@
 			  timer: 3000
 			});
 
-			<?php if($this->session->flashdata('login')) : ?>
+			<?php if($this->session->flashdata('login_proses')) : ?>
 				Toast.fire({
 					icon : 'error',
 					title : 'Username atau password salah.'

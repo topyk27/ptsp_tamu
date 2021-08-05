@@ -16,8 +16,9 @@
 			<div class="col-md-12 align-items-center">
 				<div class="text-center">
 					<?php 
-						$this->config->load('ptsp_config',TRUE);
-						$nama_pa = $this->config->item('nama_pa','ptsp_config');
+						// $this->config->load('ptsp_config',TRUE);
+						// $nama_pa = $this->config->item('nama_pa','ptsp_config');
+						$nama_pa = $this->session->userdata('nama_pa');
 					 ?>
 					<h3 class="text-uppercase">LAPORAN PENGADUAN DAN INFORMASI<br>PADA PENGADILAN AGAMA <span class="text-uppercase"><?php echo $nama_pa; ?></span><br>BULAN <?php echo $bulan; ?> TAHUN <?php echo $tahun; ?></h3>
 				</div>
