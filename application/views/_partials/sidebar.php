@@ -98,4 +98,10 @@
       </ul>
     </li>
     <?php endif; ?>
+    <li class="nav-item">
+      <a href="#" class="nav-link" onclick="modal_logout();">
+        <i class="nav-icon fas fa-power-off"></i>
+        <p>Keluar</p>
+      </a>
+    </li>
 </nav>
