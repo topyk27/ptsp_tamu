@@ -93,6 +93,7 @@
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
+      <?php $this->load->view("_partials/numpang.php") ?>
     </section>
     <!-- /.content -->
   </div>

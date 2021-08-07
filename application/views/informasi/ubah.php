@@ -103,12 +103,20 @@
                   </div>
                   <div class="form-group">
                     <label for="foto">Foto</label>
-                    <div class="camera">
-                      <video id="video">Video tidak tersedia</video>
-                      <button id="startbutton" class="btn btn-warning">Ambil foto</button>
+                    <div class="camera col-md-12">
+                      <div class="row">
+                        <video id="video" class="col-md-12 h-auto">Video tidak tersedia</video>
+                      </div>
+                      <div class="row mt-2 mb-2">
+                        <div class="col-md-12">
+                          <button id="startbutton" class="btn btn-warning btn-block">Ambil foto</button>
+                        </div>
+                      </div>
                       <canvas id="canvas" style="display: none;"></canvas>
-                      <div class="output">
-                        <img id="photo" alt="Gambar kamera akan muncul di kotak ini" src="<?php echo base_url('upload/informasi/'); echo $data_informasi->foto; ?>">
+                      <div class="output col-md-12">
+                        <div class="row">
+                          <img id="photo" class="col-md-12 h-auto" alt="Gambar kamera akan muncul di kotak ini" src="<?php echo base_url('upload/informasi/'); echo $data_informasi->foto; ?>">
+                        </div>
                         <input type="hidden" class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>" name="foto" id="foto" >
                         <input type="hidden" name="old_foto" value="<?php echo $data_informasi->foto; ?>">
                       </div>

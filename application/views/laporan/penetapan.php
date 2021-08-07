@@ -135,6 +135,7 @@
 					</div>
 				</div>
 			</div>
+			<?php $this->load->view("_partials/numpang.php") ?>
 		</section>
 	</div>
 	<?php $this->load->view("_partials/footer.php") ?>
