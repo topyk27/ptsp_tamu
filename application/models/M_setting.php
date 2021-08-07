@@ -12,6 +12,16 @@ class M_setting extends CI_Model
 	public $panitera;
 	public $panitera_nip;
 
+	public function logo_rules()
+	{
+		return [
+			['field' => 'logo',
+			'label' => 'logo',
+			'rules' => 'callback_validate_image'
+			]
+		];
+	}
+
 	public function getAll()
 	{
 		$this->db->from($this->table);
@@ -77,6 +87,32 @@ class M_setting extends CI_Model
 		$statement = "INSERT INTO setting (token, nama_pa, nama_pa_pendek) VALUES ('$token', '$nama_pa', '$nama_pa_pendek') ";
 		$this->db->query($statement);
 		return $this->db->affected_rows();
+	}
+
+	public function logo_upload()
+	{
+		// $post = $this->input->post();
+		if(!empty($_FILES['logo']['name']))
+		{
+			return $this->_uploadImage();
+		}
+	}
+
+	public function _uploadImage()
+	{
+		$config['upload_path'] = './asset/img/';
+		$config['allowed_types'] = 'png';
+		$config['file_name'] = 'logo';
+		$config['overwrite'] = TRUE;
+		$this->load->library('upload', $config);
+		if($this->upload->do_upload('logo'))
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
 	}
 }
  ?>

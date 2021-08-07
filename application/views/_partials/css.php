@@ -1,3 +1,5 @@
+<!-- Ico -->
+<link rel="icon" type="image/png" href="<?php echo base_url('asset/img/icon.png'); ?>">
 <!-- Font Awesome -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/css/fontawesome-free/css/all.min.css') ?>">
 <!-- <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css"> -->
