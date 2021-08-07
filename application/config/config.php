@@ -26,9 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // $config['base_url'] = 'http://localhost/ptsp_tamu';
 // $config['base_url'] = 'http://192.168.100.96/ptsp_tamu';
 // $config['base_url'] = "http".((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "s" : "")."://".$_SERVER['HTTP_HOST'].str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-$root=(isset($_SERVER['HTTPS']) ? "https://" : "http://").$_SERVER['HTTP_HOST'];
-$root.= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
-$config['base_url'] = $root;
+$config['base_url'] = "https"."://".$_SERVER['HTTP_HOST'].str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 
 /*
 |--------------------------------------------------------------------------
