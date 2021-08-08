@@ -64,6 +64,38 @@ class M_produk extends CI_Model
 		];
 	}
 
+	public function salinan_rules()
+	{
+		return [
+			['field' => 'nama',
+			'label' => 'nama',
+			'rules' => 'required'],
+
+			['field' => "no_perkara",
+			'label' => 'no_perkara',
+			'rules' => 'required'],
+
+			['field' => "no_perkara_tahun",
+			'label' => 'no_perkara_tahun',
+			'rules' => 'numeric',
+			'errors' => array('numeric' => 'Masukkan hanya angka saja.'),],
+
+			['field' => 'pihak',
+			'label' => 'pihak',
+			'rules' => 'required'],
+
+			['field' => 'no_hp',
+			'label' => 'no_hp',
+			'rules' => 'numeric',
+			'errors' => array('numeric' => 'Masukkan hanya angka saja.'),],
+
+			['field' => 'tanggal',
+			'label' => 'tanggal',
+			'rules' => 'required'],
+
+		];
+	}
+
 	private function _uploadImage($layanan)
 	{
 		$no_perkara_tanpa_slash = str_replace("/", "_", $this->no_perkara);

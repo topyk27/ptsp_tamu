@@ -162,7 +162,7 @@ class Produk extends CI_Controller
 	{
 		$produk = $this->M_produk;
 		$validation = $this->form_validation;
-		$validation->set_rules($produk->rules());
+		$validation->set_rules($produk->salinan_rules());
 		if($validation->run())
 		{
 			$respon = $produk->insert("putusan");
@@ -190,7 +190,7 @@ class Produk extends CI_Controller
 		{
 			$produk = $this->M_produk;
 			$validation = $this->form_validation;
-			$validation->set_rules($produk->rules());
+			$validation->set_rules($produk->salinan_rules());
 			if($validation->run())
 			{
 				$respon = $produk->update("putusan", $id);
@@ -244,7 +244,7 @@ class Produk extends CI_Controller
 	{
 		$produk = $this->M_produk;
 		$validation = $this->form_validation;
-		$validation->set_rules($produk->rules());
+		$validation->set_rules($produk->salinan_rules());
 		if($validation->run())
 		{
 			$respon = $produk->insert("penetapan");
@@ -273,7 +273,7 @@ class Produk extends CI_Controller
 		{
 			$produk = $this->M_produk;
 			$validation = $this->form_validation;
-			$validation->set_rules($produk->rules());
+			$validation->set_rules($produk->salinan_rules());
 			if($validation->run())
 			{
 				$respon = $produk->update("penetapan", $id);
