@@ -191,6 +191,7 @@ class M_produk extends CI_Model
 			$this->foto = $this->_base64upload($layanan,$post['foto'],false);
 
 		}
+		$this->dibuat = time();
 		$this->pengambilan = $layanan;
 		$this->db->insert($this->table, $this);
 		return $this->db->affected_rows();
