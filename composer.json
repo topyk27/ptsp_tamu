@@ -20,7 +20,7 @@
 		"mikey179/vfsStream": "1.1.*",
 		"phpunit/phpunit": "4.* || 5.*"
 	},
-	"script": {
+	"scripts": {
 		"compile": [
 			"chmod 755 upload/"
 		]
