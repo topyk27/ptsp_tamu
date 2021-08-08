@@ -83,7 +83,7 @@
 									<div class="row">
 										<form class="form-inline" method="post" enctype="multipart/form-data">
 											<div class="col-sm-4">
-												<img src="<?php echo base_url('asset/img/logo.png'); ?>" class="img-fluid mb-3">
+												<img src="<?php echo base_url('asset/img/logo.png').'?'.time(); ?>" class="img-fluid mb-3">
 											</div>
 											<div class="col-sm-4">
 												<input type="file" accept=".png" name="logo" class="form-control-file mb-3 <?php echo form_error('logo') ? 'is-invalid' : '' ?>">
