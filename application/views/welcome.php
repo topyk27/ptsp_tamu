@@ -101,7 +101,7 @@
 				error: function()
 				{
 					$.ajax({
-						url: "<?php echo base_url('asset/mine/token.json'); ?>",
+						url: "<?php echo base_url('asset/mine/token/token.json'); ?>",
 						method: "GET",
 						dataType: 'json',
 						success: function(lokal)
