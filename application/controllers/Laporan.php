@@ -25,39 +25,39 @@ class Laporan extends CI_Controller
 	{
 		$bln;
 		switch ($bulan) {
-			case 01 :
+			
 			case 1 :
 				$bln = 'Januari';
 				break;
-			case 02 :
+			
 			case 2 :
 				$bln = 'Februari';
 				break;
-			case 03 :
+			
 			case 3 :
 				$bln = 'Maret';
 				break;
-			case 04 :
+			
 			case 4 :
 				$bln = 'April';
 				break;
-			case 05 :
+			
 			case 5 :
 				$bln = 'Mei';
 				break;
-			case 06 :
+			
 			case 6 :
 				$bln = 'Juni';
 				break;
-			case 07 :
+			
 			case 7 :
 				$bln = 'Juli';
 				break;
-			case 08 :
+			
 			case 8 :
 				$bln = 'Agustus';
 				break;
-			case 09 :
+			
 			case 9 :
 				$bln = 'September';
 				break;
@@ -95,7 +95,7 @@ class Laporan extends CI_Controller
 		$bln = $this->nama_bulan($bulan);
 		$data['bulan'] = $bln;
 		$data['tahun'] = $tahun;
-		$data['now'] = date('d')." ".$this->nama_bulan(date('m'))." ".date('Y');
+		$data['now'] = date('d')." ".$this->nama_bulan(date('n'))." ".date('Y');
 		$data['ttd'] = $this->M_setting->ttd();
 		$this->load->view('laporan/informasi_cetak',$data);
 	}
@@ -136,7 +136,7 @@ class Laporan extends CI_Controller
 		$bln = $this->nama_bulan($bulan);
 		$data['bulan'] = $bln;
 		$data['tahun'] = $tahun;
-		$data['now'] = date('d')." ".$this->nama_bulan(date('m'))." ".date('Y');
+		$data['now'] = date('d')." ".$this->nama_bulan(date('n'))." ".date('Y');
 		$data['ttd'] = $this->M_setting->ttd();
 		switch ($pengambilan) {
 			case 'ac':
