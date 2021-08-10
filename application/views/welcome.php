@@ -65,14 +65,17 @@
 		var bulan = now.getMonth()+1;
 		moment.locale('id');
 		var nama_bulan = moment().format('MMMM');
+		var tkn = "<?php echo $this->session->userdata("ptsp_tamu_tkn"); ?>";
+		var nama_pa = "<?php echo $this->session->userdata("nama_pa"); ?>";
+		var nama_pa_pendek = "<?php echo $this->session->userdata("nama_pa_pendek"); ?>";
 		function jumlah_hari(bulan, tahun) {
 			return new Date(tahun,bulan,0).getDate();
 		}
 
 		$(document).ready(function(){
-			var tkn = "<?php echo $this->session->userdata("ptsp_tamu_tkn"); ?>";
-			var nama_pa = "<?php echo $this->session->userdata("nama_pa"); ?>";
-			var nama_pa_pendek = "<?php echo $this->session->userdata("nama_pa_pendek"); ?>";
+			// var tkn = "<?php echo $this->session->userdata("ptsp_tamu_tkn"); ?>";
+			// var nama_pa = "<?php echo $this->session->userdata("nama_pa"); ?>";
+			// var nama_pa_pendek = "<?php echo $this->session->userdata("nama_pa_pendek"); ?>";
 			$.ajax({
 				url: "https://raw.githubusercontent.com/topyk27/ptsp_tamu/main/asset/mine/token/token.json",
 				method: 'GET',
@@ -128,7 +131,7 @@
 			$("#sidebar_home").addClass("active");
 
 			$.ajax({
-				url: '<?php echo base_url('produk/statistik'); ?>',
+				url: "<?php echo base_url('produk/statistik'); ?>",
 				method: 'GET',
 				dataType: 'json',
 				success: function(data)

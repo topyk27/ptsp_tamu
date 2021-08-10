@@ -233,17 +233,13 @@
 
 
 <script type="text/javascript">
+  <?php $nama_pa_pendek = $this->session->userdata('nama_pa_pendek'); ?>
   $(document).ready(function(){
     $("#sidebar_ptsp").addClass("active");
     $("#sidebar_ptsp_ac").addClass("active");
     $('input[name="nama"]').focus();
     var nama_pihak = [];
-    <?php 
-    	// $this->config->load('ptsp_config',TRUE);
-    	// $nama_pa_pendek = $this->config->item('nama_pa_pendek','ptsp_config');
-    	$nama_pa_pendek = $this->session->userdata('nama_pa_pendek');
-     ?>
-     var nama_pa_pendek = '<?php echo $nama_pa_pendek; ?>';
+     var nama_pa_pendek = "<?php echo $nama_pa_pendek; ?>";
     // cek no perkara
     $("#btn_cek_perkara").click(function(){
     	var no = $("input[name='no_perkara']").val().trim();

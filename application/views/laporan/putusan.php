@@ -167,7 +167,7 @@
 	{
 	  $.ajax({
 	    type: 'POST',
-	    url: '<?php echo base_url('laporan/data_laporan_filter/putusan'); ?>',
+	    url: "<?php echo base_url('laporan/data_laporan_filter/putusan'); ?>",
 	    data: data,
 	    success: function(data){
 	      dt_laporan_ac.clear()
@@ -181,7 +181,7 @@
 	{
 		bulan = $("select[name='bulan']").val();
 		tahun = $("select[name='tahun']").val();
-		window.open('<?php echo base_url('laporan/cetak_laporan/putusan/'); ?>'+bulan+'/'+tahun);
+		window.open("<?php echo base_url('laporan/cetak_laporan/putusan/'); ?>"+bulan+'/'+tahun);
 	}
 
 	$(document).ready(function(){
@@ -193,7 +193,7 @@
 			dom : 'Bfrtip',
 			order : [[1,'asc']],
 			ajax : {
-			  url: '<?php echo base_url('laporan/data_laporan/putusan'); ?>',
+			  url: "<?php echo base_url('laporan/data_laporan/putusan'); ?>",
 			  dataSrc : "",
 			},
 			columns : [

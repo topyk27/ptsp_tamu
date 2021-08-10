@@ -234,7 +234,7 @@ $(document).ready(function () {
   {
     $.ajax({
       type: 'POST',
-      url: '<?php echo base_url('laporan/data_laporan_filter_informasi'); ?>',
+      url: "<?php echo base_url('laporan/data_laporan_filter_informasi'); ?>",
       data: data,
       success: function(data){
         dt_laporan_pengaduan.clear()
@@ -246,7 +246,7 @@ $(document).ready(function () {
   function cetak() {
       bulan = $("select[name='bulan']").val();
       tahun = $("select[name='tahun']").val();
-      window.open('<?php echo base_url('laporan/cetak_laporan_informasi/'); ?>'+bulan+'/'+tahun);
+      window.open("<?php echo base_url('laporan/cetak_laporan_informasi/'); ?>"+bulan+'/'+tahun);
     }
   // function hapusData(id)
   // {
@@ -288,7 +288,7 @@ $(document).ready(function () {
       // ],
       order : [[1,'asc']],
       ajax : {
-        url: '<?php echo base_url('laporan/data_laporan_informasi'); ?>',
+        url: "<?php echo base_url('laporan/data_laporan_informasi'); ?>",
         dataSrc : "",
       },
       columns : [

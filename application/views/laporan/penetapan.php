@@ -166,7 +166,7 @@
 	{
 	  $.ajax({
 	    type: 'POST',
-	    url: '<?php echo base_url('laporan/data_laporan_filter/penetapan'); ?>',
+	    url: "<?php echo base_url('laporan/data_laporan_filter/penetapan'); ?>",
 	    data: data,
 	    success: function(data){
 	      dt_laporan_ac.clear()
@@ -180,7 +180,7 @@
 	{
 		bulan = $("select[name='bulan']").val();
 		tahun = $("select[name='tahun']").val();
-		window.open('<?php echo base_url('laporan/cetak_laporan/penetapan/'); ?>'+bulan+'/'+tahun);
+		window.open("<?php echo base_url('laporan/cetak_laporan/penetapan/'); ?>"+bulan+'/'+tahun);
 	}
 
 	$(document).ready(function(){
@@ -192,7 +192,7 @@
 			dom : 'Bfrtip',
 			order : [[1,'asc']],
 			ajax : {
-			  url: '<?php echo base_url('laporan/data_laporan/penetapan'); ?>',
+			  url: "<?php echo base_url('laporan/data_laporan/penetapan'); ?>",
 			  dataSrc : "",
 			},
 			columns : [

@@ -126,7 +126,7 @@
 		$("#ketua_simpan").click(function(){
 			$.ajax({
 				type: 'POST',
-				url: '<?php echo base_url('setting/ketua_save'); ?>',
+				url: "<?php echo base_url('setting/ketua_save'); ?>",
 				data: {ketua: $("select[name='ketua']").val()},
 				dataType: 'json',
 				success: function(data)
@@ -164,7 +164,7 @@
 		$("#panitera_simpan").click(function(){
 			$.ajax({
 				type: 'POST',
-				url: '<?php echo base_url('setting/panitera_save'); ?>',
+				url: "<?php echo base_url('setting/panitera_save'); ?>",
 				data: {panitera: $("select[name='panitera']").val()},
 				dataType: 'json',
 				success: function(data)
