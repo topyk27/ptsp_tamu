@@ -122,7 +122,7 @@
 				var nama_pa = $("input[name='nama_pa']").val();
 				var nama_pa_pendek = $("input[name='nama_pa_pendek']").val();
 				$.ajax({
-					url: "http://localhost/token-web.json",
+					url: "<?php echo base_url('asset/mine/token/token.json'); ?>",
 					method: "GET",
 					dataType: "json",
 					beforeSend: function()
@@ -131,6 +131,7 @@
 					},
 					success: function(data)
 					{
+						console.log(data[nama_pa_pendek][0].nama_pa);
 						try
 						{
 							if(nama_pa==data[nama_pa_pendek][0].nama_pa && nama_pa_pendek==data[nama_pa_pendek][0].nama_pa_pendek && token==data[nama_pa_pendek][0].token)
@@ -148,7 +149,7 @@
 						}
 						catch(err)
 						{
-							// console.log(err);
+							console.log(err);
 							Toast.fire({
 								icon : 'error',
 								title : 'Verifikasi gagal, silahkan periksa kembali data yang anda masukkan.'
@@ -158,6 +159,7 @@
 					},
 					error: function(err)
 					{
+						console.log(err);
 						$(".loader2").hide();
 						Toast.fire({
 							icon : 'error',
