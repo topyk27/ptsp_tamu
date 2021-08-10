@@ -242,6 +242,8 @@
      var nama_pa_pendek = "<?php echo $nama_pa_pendek; ?>";
     // cek no perkara
     $("#btn_cek_perkara").click(function(){
+    	$("#sembunyikan").hide();
+    	$("select[name='pihak']").prop("selectedIndex", 0);
     	var no = $("input[name='no_perkara']").val().trim();
     	var tahun = $("input[name='no_perkara_tahun']").val().trim();
     	// var nmr_perkara = no+"/Pdt.G/"+tahun+"/"+nama_pa_pendek;
@@ -372,6 +374,16 @@
 	  	}
 	  // });
 	  // end ambil gambar
+		  $("input[name='no_perkara']").on("input",function(){
+		  	$("#sembunyikan").hide();
+		  	$("select[name='pihak']").hide();
+		  	$("select[name='pihak']").prop("selectedIndex", 0);
+		  });
+		  $("input[name='no_perkara_tahun']").on("input",function(){
+		  	$("#sembunyikan").hide();
+		  	$("select[name='pihak']").hide();
+		  	$("select[name='pihak']").prop("selectedIndex", 0);
+		  });
 	  });
 </script>
 </body>

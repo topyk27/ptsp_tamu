@@ -280,6 +280,16 @@
     	        }
     	  	}
 		    // end ambil gambar
+		    $("input[name='no_perkara']").on("input",function(){
+		    	$("#sembunyikan").hide();
+		    	$("select[name='pihak']").hide();
+		    	$("select[name='pihak']").prop("selectedIndex", 0);
+		    });
+		    $("input[name='no_perkara_tahun']").on("input",function(){
+		    	$("#sembunyikan").hide();
+		    	$("select[name='pihak']").hide();
+		    	$("select[name='pihak']").prop("selectedIndex", 0);
+		    });
 		});
 	</script>
 </body>

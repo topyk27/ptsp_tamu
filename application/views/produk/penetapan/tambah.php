@@ -164,9 +164,16 @@
 						{
 							// $("select[name='pihak']").show();
 							// $("select[name='pihak']").prop('disabled', false);
-							nama_pihak = [data[0]["p"],data[0]["t"]];
-							$("input[name='nama']").val(nama_pihak[0]);
-							$("#sembunyikan").show();
+							try {
+								nama_pihak = [data[0]["p"],data[0]["t"]];
+								$("input[name='nama']").val(nama_pihak[0]);
+								$("#sembunyikan").show();
+							}
+							catch(err)
+							{
+								console.log(err);
+								alert("Perkara belum terdaftar");
+							}
 						}
 					}
 				});
@@ -274,6 +281,13 @@
     	        }
     	  	}
 		    // end ambil gambar
+
+		    $("input[name='no_perkara']").on("input",function(){
+		    	$("#sembunyikan").hide();
+		    });
+		    $("input[name='no_perkara_tahun']").on("input",function(){
+		    	$("#sembunyikan").hide();
+		    });
 		});
 	</script>
 </body>
