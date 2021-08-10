@@ -37,7 +37,7 @@
 		      			$respon = $this->session->flashdata('respon');
 		      			if(isset($respon)){ ?>
 		      				<div class='alert alert-warning' role='alert' id='responMsg'>
-		      					Akta cerai sudah diambil
+		      					<?php echo $respon; ?>
 		      				</div>
 		      				<!-- <script type="text/javascript">
 		      					document.addEventListener("DOMContentLoaded", function(event) { 
