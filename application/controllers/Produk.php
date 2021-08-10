@@ -87,6 +87,7 @@ class Produk extends CI_Controller
 			else
 			{
 				$this->session->set_flashdata('respon',"Akta cerai sudah pernah diambil");
+				redirect('produk/ac_tambah');
 			}
 		}
 		$this->load->view("produk/ac/tambah");
