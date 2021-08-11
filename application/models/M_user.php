@@ -139,7 +139,7 @@ class M_user extends CI_Model
 		}
 		else
 		{
-			false;
+			return false;
 		}
 	}
 

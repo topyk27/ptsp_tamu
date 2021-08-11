@@ -35,47 +35,47 @@
 								<th scope="col">Informasi Yang Diminta</th>
 								<th scope="col">Keterangan</th>
 							</tr>
-							<tbody>
-								<?php 
-									$no = 1;
-									function tgl_indo($tanggal){
-										$bulan = array (
-											1 =>   'Januari',
-											'Februari',
-											'Maret',
-											'April',
-											'Mei',
-											'Juni',
-											'Juli',
-											'Agustus',
-											'September',
-											'Oktober',
-											'November',
-											'Desember'
-										);
-										$pecahkan = explode('-', $tanggal);
-										
-										// variabel pecahkan 0 = tanggal
-										// variabel pecahkan 1 = bulan
-										// variabel pecahkan 2 = tahun
-									 
-										return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
-									}
-									foreach($laporan as $key=>$val):
-								 ?>
-								<tr>
-									<th scope="row" class="text-center"><?php echo $no; ?></th>
-									<td style="white-space: nowrap; width: 1%;"><?php echo tgl_indo($val->tanggal); ?></td>
-									<td><?php echo $val->nama; ?></td>
-									<td><?php echo $val->alamat; ?></td>
-									<td><?php echo $val->telepon; ?></td>
-									<td><?php echo $val->pekerjaan; ?></td>
-									<td><?php echo $val->informasi; ?></td>
-									<td><?php echo $val->keterangan; ?></td>
-							 	<tr>
-							 	<?php $no++; endforeach; ?>
-							</tbody>
 						</thead>
+						<tbody>
+							<?php 
+								$no = 1;
+								function tgl_indo($tanggal){
+									$bulan = array (
+										1 =>   'Januari',
+										'Februari',
+										'Maret',
+										'April',
+										'Mei',
+										'Juni',
+										'Juli',
+										'Agustus',
+										'September',
+										'Oktober',
+										'November',
+										'Desember'
+									);
+									$pecahkan = explode('-', $tanggal);
+									
+									// variabel pecahkan 0 = tanggal
+									// variabel pecahkan 1 = bulan
+									// variabel pecahkan 2 = tahun
+								 
+									return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+								}
+								foreach($laporan as $key=>$val):
+							 ?>
+							<tr>
+								<th scope="row" class="text-center"><?php echo $no; ?></th>
+								<td style="white-space: nowrap; width: 1%;"><?php echo tgl_indo($val->tanggal); ?></td>
+								<td><?php echo $val->nama; ?></td>
+								<td><?php echo $val->alamat; ?></td>
+								<td><?php echo $val->telepon; ?></td>
+								<td><?php echo $val->pekerjaan; ?></td>
+								<td><?php echo $val->informasi; ?></td>
+								<td><?php echo $val->keterangan; ?></td>
+						 	<tr>
+						 	<?php $no++; endforeach; ?>
+						</tbody>
 					</table>
 				</div>
 			</div>
