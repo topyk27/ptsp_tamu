@@ -44,10 +44,14 @@
 							<button type="submit" class="btn btn-primary btn-block">Masuk</button>
 						</div>
 					</div>
+					<?php 
+						$this->config->load('ptsp_tamu_config',TRUE);
+						$versi = $this->config->item('version','ptsp_tamu_config');
+					 ?>
 					<footer class="main-footer" style="margin-left: 0px;">
 						<strong class="color-change-4x">Copyright &copy; <?php echo date("Y"); ?> <a href="https://topyk27.github.io/">Taufik Dwi Wahyu Putra<br></a></strong>
 						<div class="float-right d-none d-sm-block">
-						  <b>Version</b> 1.0.0
+						  <b>Version</b> <?php echo $versi; ?>
 						</div>
 					</footer>
 				</form>
