@@ -106,7 +106,7 @@
 		                <!-- tes camera -->
 		                <div class="form-group">
 		                	<label for="foto">Foto</label>
-		                	<div class="camera col-md-12">
+		                	<div class="camera col-md-6">
 		                		<div class="row">
 			                		<video id="video" class="col-md-12 h-auto">Video tidak tersedia</video>
 		                		</div>

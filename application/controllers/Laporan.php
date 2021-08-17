@@ -11,6 +11,7 @@ class Laporan extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("M_informasi");
+		$this->load->model("M_pendaftaran");
 		$this->load->model("M_produk");
 		$this->load->model("M_setting");
 		$this->load->model("M_user");
@@ -103,6 +104,34 @@ class Laporan extends CI_Controller
 	public function data_laporan_filter_informasi()
 	{
 		$data = $this->M_informasi->getByDate();
+		echo json_encode($data);
+	}
+
+	public function pendaftaran()
+	{
+		$this->load->view('laporan/pendaftaran');
+	}
+
+	public function data_laporan_pendaftaran()
+	{
+		$data = $this->M_pendaftaran->getAll();
+		echo json_encode($data);
+	}
+
+	public function cetak_laporan_pendaftaran($bulan,$tahun)
+	{
+		$data['laporan'] = $this->M_pendaftaran->cetak($bulan,$tahun);
+		$bln = $this->nama_bulan($bulan);
+		$data['bulan'] = $bln;
+		$data['tahun'] = $tahun;
+		$data['now'] = date('d')." ".$this->nama_bulan(date('n'))." ".date('Y');
+		$data['ttd'] = $this->M_setting->ttd();
+		$this->load->view('laporan/pendaftaran_cetak',$data);
+	}
+
+	public function data_laporan_filter_pendaftaran()
+	{
+		$data = $this->M_pendaftaran->getByDate();
 		echo json_encode($data);
 	}
 

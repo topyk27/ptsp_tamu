@@ -76,13 +76,14 @@ class M_informasi extends CI_Model
 			$nama_file_db = $file_name.'.png';
 		}
 		file_put_contents($file,$data);
+		
 		return $nama_file_db;
 	}
 
 	private function _deleteImage($layanan, $id)
 	{
 		$informasi = $this->getById($id);
-		if($informasi->foto != "default.jpg")
+		if($informasi->foto != "default.png")
 		{
 			$filename =  explode(".", $informasi->foto)[0];
 			return array_map('unlink', glob(FCPATH."upload/".$layanan."/".$filename.".*"));
@@ -143,6 +144,11 @@ class M_informasi extends CI_Model
 			
 			$this->foto = $this->_base64upload('informasi',$post['foto'],false);
 
+		}
+		else
+		{
+			// $this->foto = "default.png";
+			return "foto kosong";
 		}
 		$this->diperbarui = date('Y-m-d H:i:s');
 		$this->db->insert($this->table, $this);

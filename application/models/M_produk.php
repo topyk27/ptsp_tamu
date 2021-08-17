@@ -32,16 +32,16 @@ class M_produk extends CI_Model
 			// 'rules' => 'required'],
 			['field' => "no_perkara",
 			'label' => 'no_perkara',
-			'rules' => 'required'],
+			'rules' => 'required',],
 
 			['field' => "no_perkara_tahun",
 			'label' => 'no_perkara_tahun',
 			'rules' => 'numeric',
 			'errors' => array('numeric' => 'Masukkan hanya angka saja.'),],
 
-			// ['field' => 'no_ac',
-			// 'label' => 'no_ac',
-			// 'rules' => 'required'],
+			['field' => 'no_ac',
+			'label' => 'no_ac',
+			'rules' => 'required'],
 
 			['field' => 'pihak',
 			'label' => 'pihak',
@@ -58,9 +58,54 @@ class M_produk extends CI_Model
 
 			// ['field' => 'foto',
 			// 'label' => 'foto',
-			// // 'rules' => 'callback_validate_image'],
+			// 'rules' => 'callback_validate_image'],
 			// 'rules' => 'required',
 			// 'errors' => array('required' => "Silahkan pilih foto."),],
+		];
+	}
+
+	public function rules_ac_manual()
+	{
+		return [
+			['field' => 'nama',
+			'label' => 'nama',
+			'rules' => 'required|callback_validate_name'],
+
+			// ['field' => 'no_perkara',
+			// 'label' => 'no_perkara',
+			// 'rules' => 'required'],
+			['field' => "no_perkara",
+			'label' => 'no_perkara',
+			'rules' => 'numeric',
+			'errors' => array('numeric' => 'Masukkan hanya angka saja.'),],
+
+			['field' => "no_perkara_tahun",
+			'label' => 'no_perkara_tahun',
+			'rules' => 'numeric',
+			'errors' => array('numeric' => 'Masukkan hanya angka saja.'),],
+
+			['field' => 'no_ac_aja',
+			'label' => 'no_ac',
+			'rules' => 'numeric',
+			'errors' => array('numeric' => 'Masukkan hanya angka saja.'),],
+
+			['field' => 'no_ac_tahun',
+			'label' => 'no_ac_tahun',
+			'rules' => 'numeric',
+			'errors' => array('numeric' => 'Masukkan hanya angka saja.'),],
+
+			['field' => 'pihak',
+			'label' => 'pihak',
+			'rules' => 'required'],
+
+			['field' => 'no_hp',
+			'label' => 'no_hp',
+			'rules' => 'numeric',
+			'errors' => array('numeric' => 'Masukkan hanya angka saja.'),],
+
+			['field' => 'tanggal',
+			'label' => 'tanggal',
+			'rules' => 'required'],
 		];
 	}
 
@@ -73,7 +118,7 @@ class M_produk extends CI_Model
 
 			['field' => "no_perkara",
 			'label' => 'no_perkara',
-			'rules' => 'required'],
+			'rules' => 'required',],
 
 			['field' => "no_perkara_tahun",
 			'label' => 'no_perkara_tahun',
@@ -142,13 +187,17 @@ class M_produk extends CI_Model
 		}
 		file_put_contents($file,$data);
 		// return $file_name.'.png';
+		if(is_null($nama_file_db))
+		{
+			$nama_file_db ="default.png";
+		}
 		return $nama_file_db;
 	}
 
 	private function _deleteImage($layanan, $id)
 	{
 		$produk = $this->getById($id);
-		if($produk->foto != "default.jpg")
+		if($produk->foto != "default.png")
 		{
 			$filename = explode(".", $produk->foto)[0];
 			return array_map('unlink', glob(FCPATH."upload/".$layanan."/".$filename.".*"));
@@ -187,7 +236,7 @@ class M_produk extends CI_Model
 		{
 			if($this->sudah_ambil_ac($no_perkara."/Pdt.G/".$tahun."/".$nama_pa_pendek,$post['pihak']))
 			{
-				return 0;
+				return "sudah ambil";
 			}
 			else
 			{
@@ -223,6 +272,10 @@ class M_produk extends CI_Model
 			$this->foto = $this->_base64upload($layanan,$post['foto'],false);
 
 		}
+		else
+		{
+			return "foto kosong";
+		}
 		$this->dibuat = time();
 		$this->pengambilan = $layanan;
 		$this->db->insert($this->table, $this);
@@ -235,10 +288,12 @@ class M_produk extends CI_Model
 		$this->id = $id;
 		$this->nama = $post['nama'];
 		$replace0 = "/^0/";  // Regex
-		$this->no_perkara = preg_replace($replace0, "", $post['no_perkara']);
+		// $this->no_perkara = preg_replace($replace0, "", $post['no_perkara']);
+		$this->no_perkara = $post['no_perkara'];
 		if($layanan == "ac")
 		{
-			$this->no_ac = preg_replace($replace0, "", $post['no_ac']);
+			// $this->no_ac = preg_replace($replace0, "", $post['no_ac']);
+			$this->no_ac = $post['no_ac'];
 		}
 		$this->pihak = $post['pihak'];
 		$this->no_hp = $post['no_hp'];
@@ -326,6 +381,19 @@ class M_produk extends CI_Model
 			return false;
 		}
 
+	}
+
+	public function getFoto()
+	{
+		$post = $this->input->post();
+		$no = $post['no'];
+		$jenis_perkara = ($post['jenis']=="Pdt.G") ? "gugatan" : "permohonan";
+		$tahun = $post['tahun'];
+		$nama_pa_pendek = $this->session->userdata('nama_pa_pendek');
+		$no_perkara = $no."/".$post['jenis']."/".$tahun."/".$nama_pa_pendek;
+		$statement = "SELECT foto FROM pendaftaran WHERE no_perkara='$no_perkara' LIMIT 1";
+		$query = $this->db->query($statement);
+		return ($query->num_rows() == 0) ? $jenis_perkara."/default.png" : $query->row()->foto;
 	}
 
 	public function cek_data_perkara_gugatan_putusan()

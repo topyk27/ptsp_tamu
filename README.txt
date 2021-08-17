@@ -8,8 +8,9 @@ adalah aplikasi untuk mendata pengunjung yang datang ke Pelayanan Terpadu Satu P
 1. Pindahkan folder ini ke komputer server yang sama dengan folder SIPP.
 2. Buat database dengan nama `ptsp_tamu` di server yang sama dengan database SIPP.
 3. Silahkan import file sql yang ada di folder ini.
-4. Buka file `application/config/database.php`.
+4. Buka file `application/config/database.php` dan `aplication/config/ptsp_tamu_config.php`.
 5. Sesuaikan username, password, dan databasenya.
+`database.php`
 ```
 $db['default'] = array(
 	...
@@ -26,6 +27,11 @@ $db['sipp'] = array(
 	'database' => 'sipp',
 	...
 );
+```
+`ptsp_tamu_config.php`
+```
+$config['sipp'] = "sipp";
+$config['ini'] = "ptsp_tamu";
 ```
 6. Buka browser dan masukkan `IP SERVER/ptsp_tamu`.
 7. Data login

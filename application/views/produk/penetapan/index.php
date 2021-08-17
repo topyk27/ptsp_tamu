@@ -243,6 +243,14 @@
 		  $('#hapusModal').find('.modal-body').html("<p>Apakah anda ingin menghapus data "+data['nama']+"? Data ini tidak bisa dipulihkan kembali.");
 		  $('#hapusModal').find('#deleteButton').attr("onclick", "hapusData("+data['id']+")");
 		});
+
+		<?php
+			if($this->session->userdata('respon')) :
+				$respon = $this->session->userdata('respon');
+		?>
+		$("#respon").html("<div class='alert alert-success' role='alert' id='responMsg'><strong>Selamat</strong> <?php echo $respon; ?></div>")
+		$("#responMsg").hide().fadeIn(200).delay(2000).fadeOut(1000, function(){$(this).remove();});
+		<?php endif; ?>
 	});
 </script>
 </body>

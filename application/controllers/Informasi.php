@@ -46,7 +46,16 @@ class Informasi extends CI_Controller
 			$respon = $informasi->insert();
 			if($respon == 1)
 			{
+				$this->session->set_flashdata('success', 'Data berhasil disimpan');
 				redirect("informasi");
+			}
+			else if($respon == "foto kosong")
+			{
+				$this->session->set_flashdata('error', 'Mohon mengambil foto');
+			}
+			else
+			{
+				$this->session->set_flashdata('success', 'Gagal menyimpan data');
 			}
 		}
 		$this->load->view("informasi/tambah");

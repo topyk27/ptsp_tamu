@@ -183,7 +183,7 @@ class M_user extends CI_Model
 
 	public function data_layanan()
 	{
-		$statement = "SELECT * FROM layanan WHERE id != 1";
+		$statement = "SELECT * FROM layanan WHERE id != 1 ORDER BY nama_layanan";
 		$query = $this->db->query($statement);
 		return $query->result();
 	}

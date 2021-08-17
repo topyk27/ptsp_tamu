@@ -63,6 +63,9 @@
 										<dt class="col-sm-4">Pengaduan & Informasi</dt>
 										<dd class="col-sm-8">Mencatat pengaduan apa yang disampaikan atau informasi apa yang ingin diketahui</dd>
 
+										<dt class="col-sm-4">Pendaftaran</dt>
+										<dd class="col-sm-8">Ambil foto pihak yang mendaftar agar bisa melihat apakah yang mengambil produk sama dengan yang bersangkutan.</dd>
+
 										<dt class="col-sm-4">Pengambilan Produk</dt>
 										<dd class="col-sm-8">Masih zaman ambil produk dimintai KTP? Langsung difotokan saja pihak yang mengambil beserta produknya.</dd>
 									</dl>

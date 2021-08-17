@@ -7,6 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php $this->load->view("_partials/css.php") ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/plugin/datepicker/datepicker3.css') ?>">
+	<!-- lightbox -->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/plugin/lightbox2/dist/css/lightbox.min.css'); ?>">
 	
 </head>
 <body class="hold-transition sidebar-mini">
@@ -62,6 +64,11 @@
 		            </div>
 		            <form role="form" method="post" enctype="multipart/form-data">
 		              <div class="card-body">
+		              	<div class="form-row">
+		              		<div class="col-md-12">
+		              			<a href="<?php echo base_url('produk/ac/manual'); ?>" class="btn btn-secondary float-sm-right" title="Gunakan tombol ini apabila perkara tidak masuk di database SIPP">Tambah Manual</a>
+		              		</div>
+		              	</div>
 		              	<div class="form-row">
 	                		<div class="col-md-6">
 	                			<label for="no_perkara">Nomor Perkara</label>
@@ -178,23 +185,34 @@
 			              	<!-- tes -->
 			              	<div class="form-group">
 			              		<label for="foto">Foto</label>
-			              		<div class="camera col-md-12">
-			              			<div class="row">
-				              			<video id="video" class="col-md-12 h-auto">Video tidak tersedia</video>
-			              			</div>
-			              			<div class="row mt-2 mb-2">
-			              				<div class="col-md-12">
-					              			<button id="startbutton" class="btn btn-warning btn-block">Ambil foto</button>
-			              				</div>
-			              			</div>
-			              			<canvas id="canvas" style="display: none;"></canvas>
-			              			<div class="output col-md-12">
-			              				<div class="row">
-				              				<img id="photo" alt="Gambar kamera akan muncul di kotak ini">
-			              				</div>
-			              				<input type="hidden" class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>" name="foto" id="foto" >
+			              		<div class="row">
+			              			<div class="camera col-md-6">
+			              				<video id="video" class="col-md-12 h-auto">Video tidak tersedia</video>
 			              			</div>
 			              		</div>
+  		              			<div class="row mt-2 mb-2">
+  		              				<div class="col-md-6">
+  				              			<button id="startbutton" class="btn btn-warning btn-block">Ambil foto</button>
+  		              				</div>
+  		              			</div>
+  		              			<canvas id="canvas" style="display: none;"></canvas>
+  		              			<div class="row mt-2">
+	  		              			<div class="output col-md-6 mb-2">
+	  		              				<label for="hasil">Hasil Foto</label>
+	  		              				<div class="row">
+	  		              					<img id="photo" alt="Gambar kamera akan muncul di kotak ini" class="img-fluid">
+	  		              				</div>
+	  		              				<input type="hidden" class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>" name="foto" id="foto" >
+	  		              			</div>
+	  		              			<div class="col-md-6 mb-2">
+  		              					<label for="foto_pendaftaran">Foto pada saat pendaftaran</label>
+	  		              				<div class="row">
+	  		              					<a href="<?php echo base_url('upload/ac/default.png'); ?>" id="box_foto_pendaftaran">
+		  		              					<img class="img-fluid" id="foto_pendaftaran" src="<?php echo base_url('upload/ac/default.png'); ?>">
+	  		              					</a>
+	  		              				</div>
+	  		              			</div>
+  		              			</div>
 			              	</div>
 			              	<!-- end tes -->
 				              <div class="card-footer">
@@ -214,6 +232,7 @@
 		</div>
 		<!-- /.content-wrapper -->
 		<?php $this->load->view("_partials/footer.php") ?>
+		<?php $this->load->view("_partials/loader.php") ?>
 		<!-- Control Sidebar -->
 		<aside class="control-sidebar control-sidebar-dark">
 		  <!-- Control sidebar content goes here -->
@@ -230,7 +249,8 @@
 <script src="<?php echo base_url('asset/dist/js/adminlte.min.js') ?>"></script>
 <!-- datepicker -->
 <script src="<?php echo base_url('asset/plugin/datepicker/bootstrap-datepicker.js') ?>"></script>
-
+<!-- lightbox -->
+<script src="<?php echo base_url('asset/plugin/lightbox2/dist/js/lightbox.min.js') ?>"></script>
 
 <script type="text/javascript">
   <?php $nama_pa_pendek = $this->session->userdata('nama_pa_pendek'); ?>
@@ -239,19 +259,24 @@
     $("#sidebar_ptsp_ac").addClass("active");
     $('input[name="nama"]').focus();
     var nama_pihak = [];
-     var nama_pa_pendek = "<?php echo $nama_pa_pendek; ?>";
+    var nama_pa_pendek = "<?php echo $nama_pa_pendek; ?>";
+    var no,tahun;
     // cek no perkara
     $("#btn_cek_perkara").click(function(){
     	$("#sembunyikan").hide();
     	$("select[name='pihak']").prop("selectedIndex", 0);
-    	var no = $("input[name='no_perkara']").val().trim();
-    	var tahun = $("input[name='no_perkara_tahun']").val().trim();
+    	no = $("input[name='no_perkara']").val().trim();
+    	tahun = $("input[name='no_perkara_tahun']").val().trim();
     	// var nmr_perkara = no+"/Pdt.G/"+tahun+"/"+nama_pa_pendek;
     	$.ajax({
     		url: "<?php echo base_url('produk/cek_data_perkara_gugatan_ac'); ?>",
     		method: "POST",
     		data: {no: no, tahun: tahun},
     		dataType: "json",
+    		beforeSend: function()
+    		{
+    			$(".loader2").show();
+    		},
     		success: function(data)
     		{
     			if(!data)
@@ -265,6 +290,11 @@
     				nama_pihak = [data[0]["p"],data[0]["t"]];
     				$("input[name='no_ac']").val(data[0]["nomor_akta_cerai"]);
     			}
+    			$(".loader2").hide();
+    		},
+    		error: function(err)
+    		{
+    			$(".loader2").hide();
     		}
     	});
     });
@@ -273,11 +303,16 @@
     	if(this.value == "p")
     	{
     		$("input[name='nama']").val(nama_pihak[0]);
+    		getFoto();
     		$("#sembunyikan").show();
     	}
     	else if(this.value == "t")
     	{
     		$("input[name='nama']").val(nama_pihak[1]);
+    		$("#box_foto_pendaftaran").attr("href","<?php echo base_url("upload/pendaftaran/gugatan/default.png") ?>");
+    		$("#box_foto_pendaftaran").attr("data-lightbox","img");
+    		$("#box_foto_pendaftaran").attr("data-title",nama_pihak[1]);
+    		$("#foto_pendaftaran").attr("src","<?php echo base_url('upload/pendaftaran/gugatan/default.png'); ?>");
     		$("#sembunyikan").show();
     	}
     	else
@@ -286,6 +321,37 @@
     		$("#sembunyikan").hide();
     	}
     });
+
+    function getFoto() {
+
+    	$.ajax({
+    		url: "<?php echo base_url("produk/getFoto"); ?>",
+    		method: "POST",
+    		data : {no: no, jenis: "Pdt.G", tahun: tahun},
+    		dataType: "json",
+    		beforeSend: function()
+    		{
+    			$(".loader2").show();
+    		},
+    		success: function(data)
+    		{
+    			$("#box_foto_pendaftaran").attr("href","<?php echo base_url("upload/pendaftaran/") ?>"+data);
+    			$("#box_foto_pendaftaran").attr("data-lightbox","img");
+    			$("#box_foto_pendaftaran").attr("data-title",nama_pihak[0]);
+    			$("#foto_pendaftaran").attr("src","<?php echo base_url('upload/pendaftaran/'); ?>"+data);
+    			$(".loader2").hide();
+    		},
+    		error: function(err)
+    		{
+    			$("#box_foto_pendaftaran").attr("href","<?php echo base_url("upload/pendaftaran/gugatan/default.png") ?>");
+    			$("#box_foto_pendaftaran").attr("data-lightbox","img");
+    			$("#box_foto_pendaftaran").attr("data-title",nama_pihak[0]);
+    			$("#foto_pendaftaran").attr("src","<?php echo base_url('upload/pendaftaran/gugatan/default.png'); ?>");
+    			$(".loader2").hide();
+    		}
+
+    	});
+    }
 
     // datepicker
     var date_input=$('input[name="tanggal"]'); //our date input has the name "date"

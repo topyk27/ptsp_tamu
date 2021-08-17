@@ -12,6 +12,11 @@
       <a href="<?php echo base_url("Informasi"); ?>" class="nav-link">Pengaduan & Informasi</a>
     </li>
     <?php endif; ?>
+    <?php if($this->session->userdata('layanan_id') == 1 || $this->session->userdata('layanan_id') == 4) : ?>
+    <li class="nav-item d-none d-sm-inline-block">
+      <a href="<?php echo base_url("pendaftaran"); ?>" class="nav-link">Pendaftaran</a>
+    </li>
+    <?php endif; ?>
     <?php if($this->session->userdata('layanan_id') == 1 || $this->session->userdata('layanan_id') == 3) : ?>
     <li class="nav-item d-none d-sm-inline-block">
       <a href="<?php echo base_url("produk/ac"); ?>" class="nav-link">Akta Cerai</a>

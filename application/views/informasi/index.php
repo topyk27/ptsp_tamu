@@ -174,14 +174,14 @@ $(document).ready(function () {
         {
           if(respon="1")
           {
-            console.log("berhasil");
+            // console.log("berhasil");
             dt_informasi.ajax.reload();
              $("#respon").html("<div class='alert alert-success' role='alert' id='responMsg'><strong>Selamat</strong> Data berhasil dihapus</div>")
              $("#responMsg").hide().fadeIn(200).delay(2000).fadeOut(1000, function(){$(this).remove();});
           }
           else
           {
-            console.log("gagal hapus data");
+            // console.log("gagal hapus data");
             $("#respon").html("<div class='alert alert-warning' role='alert' id='responMsg'><strong>Maaf</strong> Data gagal dihapus. Silahkan coba lagi.</div>")
             $("#responMsg").hide().fadeIn(200).delay(2000).fadeOut(1000, function(){$(this).remove();});
           }
@@ -271,6 +271,13 @@ $(document).ready(function () {
     });
 
     // });
+    <?php
+      if($this->session->userdata('success')) :
+        $respon = $this->session->userdata('success');
+    ?>
+      $("#respon").html("<div class='alert alert-success' role='alert' id='responMsg'><?php echo $respon; ?></div>")
+      $("#responMsg").hide().fadeIn(200).delay(2000).fadeOut(1000, function(){$(this).remove();});
+    <?php endif; ?>
   });
 </script>
 </body>

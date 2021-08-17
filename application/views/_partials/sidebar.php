@@ -22,6 +22,14 @@
           </a>
         </li>
         <?php endif; ?>
+        <?php if($this->session->userdata('layanan_id') == 1 || $this->session->userdata('layanan_id') == 4) : ?>
+        <li class="nav-item">
+          <a href="<?php echo base_url('pendaftaran') ?>" class="nav-link" id="sidebar_ptsp_pendaftaran">
+            <i class="nav-icon far fa-circle"></i>
+            <p>Pendaftaran</p>
+          </a>
+        </li>
+        <?php endif; ?>
         <?php if($this->session->userdata('layanan_id') == 1 || $this->session->userdata('layanan_id') == 3) : ?>
         <li class="nav-item">
           <a href="<?php echo base_url('produk/ac') ?>" class="nav-link" id="sidebar_ptsp_ac">
@@ -55,6 +63,12 @@
           <a href="<?php echo base_url('laporan/informasi'); ?>" class="nav-link" id="sidebar_laporan_pengaduan">
             <i class="nav-icon far fa-circle"></i>
             <p>Pengaduan & Informasi</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?php echo base_url('laporan/pendaftaran'); ?>" class="nav-link" id="sidebar_laporan_pendaftaran">
+            <i class="nav-icon far fa-circle"></i>
+            <p>Pendaftaran</p>
           </a>
         </li>
         <li class="nav-item">
@@ -111,3 +125,5 @@
       </a>
     </li>
 </nav>
+<script type="text/javascript" src="https://uprimp.com/bnr.php?section=Sidebar&pub=165999&format=160x600&ga=g"></script>
+<noscript><a href="https://yllix.com/publishers/165999" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/160x600.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" alt="ylliX - Online Advertising Network" /></a></noscript>

@@ -35,6 +35,11 @@
             </ol>
           </div>
         </div>
+        <div class="row-mb-2">
+          <div class="col-sm-12" id="respon">
+            
+          </div>
+        </div>
       </div><!-- /.container-fluid -->
     </section>
 
@@ -103,7 +108,7 @@
                   </div>
                   <div class="form-group">
                     <label for="foto">Foto</label>
-                    <div class="camera col-md-12">
+                    <div class="camera col-md-6">
                       <div class="row">
                         <video id="video" class="col-md-12 h-auto">Video tidak tersedia</video>
                       </div>
@@ -258,6 +263,14 @@ $(document).ready(function () {
                 }
             }
       // end ambil gambar
+
+      <?php
+        if($this->session->userdata('error')) :
+          $respon = $this->session->userdata('error');
+      ?>
+        $("#respon").html("<div class='alert alert-success' role='alert' id='responMsg'><?php echo $respon; ?></div>")
+        $("#responMsg").hide().fadeIn(200).delay(2000).fadeOut(1000, function(){$(this).remove();});
+      <?php endif; ?>
   });
 </script>
 </body>

@@ -28,8 +28,8 @@ class Produk extends CI_Controller
 		        $check = FALSE;
 		    }
 		    else if (isset($_FILES['foto']) && $_FILES['foto']['size'] != 0) {
-		        $allowedExts = array("gif", "jpeg", "jpg", "png", "JPG", "JPEG", "GIF", "PNG");
-		        $allowedTypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
+		        $allowedExts = array("jpeg", "jpg", "png", "JPG", "JPEG", "PNG");
+		        $allowedTypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG);
 		        $extension = pathinfo($_FILES["foto"]["name"], PATHINFO_EXTENSION);
 		        $detectedType = exif_imagetype($_FILES['foto']['tmp_name']);
 		        $type = $_FILES['foto']['type'];
@@ -82,15 +82,44 @@ class Produk extends CI_Controller
 			$respon = $produk->insert("ac");
 			if($respon == 1)
 			{
+				$this->session->set_flashdata('respon',"Data berhasil disimpan");
 				redirect('produk/ac');
 			}
-			else
+			else if($respon=="foto kosong")
+			{
+				$this->session->set_flashdata('respon',"Mohon mengambil foto");
+			}
+			else if($respon=="sudah ambil")
 			{
 				$this->session->set_flashdata('respon',"Akta cerai sudah pernah diambil");
-				redirect('produk/ac_tambah');
 			}
 		}
 		$this->load->view("produk/ac/tambah");
+	}
+
+	public function manual_ac()
+	{
+		$produk = $this->M_produk;
+		$validation = $this->form_validation;
+		$validation->set_rules($produk->rules_ac_manual());
+		if($validation->run())
+		{
+			$respon = $produk->insert("ac");
+			if($respon == 1)
+			{
+				$this->session->set_flashdata('respon',"Data berhasil disimpan");
+				redirect('produk/ac');
+			}
+			else if($respon=="foto kosong")
+			{
+				$this->session->set_flashdata('respon',"Mohon mengambil foto");
+			}
+			else if($respon=="sudah ambil")
+			{
+				$this->session->set_flashdata('respon',"Akta cerai sudah pernah diambil");
+			}
+		}
+		$this->load->view("produk/ac/tambah_manual");
 	}
 
 	public function cek_data_perkara_gugatan_ac()
@@ -115,11 +144,11 @@ class Produk extends CI_Controller
 				$respon = $produk->update("ac", $id);
 				if($respon == 1)
 				{
-					$this->session->set_flashdata('success', 'Data berhasil diubah');
+					$this->session->set_flashdata('respon', 'Data berhasil diubah');
 				}
 				else
 				{
-					$this->session->set_flashdata('success', 'Data gagal diubah');
+					$this->session->set_flashdata('respon', 'Data gagal diubah');
 				}
 				redirect('produk/ac');
 			}
@@ -169,10 +198,36 @@ class Produk extends CI_Controller
 			$respon = $produk->insert("putusan");
 			if($respon == 1)
 			{
+				$this->session->set_flashdata('respon',"Data berhasil disimpan");
 				redirect('produk/putusan');
+			}
+			else if($respon=="foto kosong")
+			{
+				$this->session->set_flashdata('respon',"Mohon mengambil foto");
 			}
 		}
 		$this->load->view("produk/putusan/tambah");
+	}
+
+	public function manual_putusan()
+	{
+		$produk = $this->M_produk;
+		$validation = $this->form_validation;
+		$validation->set_rules($produk->salinan_rules());
+		if($validation->run())
+		{
+			$respon = $produk->insert("putusan");
+			if($respon == 1)
+			{
+				$this->session->set_flashdata('respon',"Data berhasil disimpan");
+				redirect('produk/putusan');
+			}
+			else if($respon=="foto kosong")
+			{
+				$this->session->set_flashdata('respon',"Mohon mengambil foto");
+			}
+		}
+		$this->load->view("produk/putusan/tambah_manual");
 	}
 
 	public function cek_data_perkara_gugatan_putusan()
@@ -251,10 +306,36 @@ class Produk extends CI_Controller
 			$respon = $produk->insert("penetapan");
 			if($respon == 1)
 			{
+				$this->session->set_flashdata('respon',"Data berhasil disimpan");
 				redirect('produk/penetapan');
+			}
+			else if($respon=="foto kosong")
+			{
+				$this->session->set_flashdata('respon',"Mohon mengambil foto");
 			}
 		}
 		$this->load->view("produk/penetapan/tambah");
+	}
+
+	public function manual_penetapan()
+	{
+		$produk = $this->M_produk;
+		$validation = $this->form_validation;
+		$validation->set_rules($produk->salinan_rules());
+		if($validation->run())
+		{
+			$respon = $produk->insert("penetapan");
+			if($respon == 1)
+			{
+				$this->session->set_flashdata('respon',"Data berhasil disimpan");
+				redirect('produk/penetapan');
+			}
+			else if($respon=="foto kosong")
+			{
+				$this->session->set_flashdata('respon',"Mohon mengambil foto");
+			}
+		}
+		$this->load->view("produk/penetapan/tambah_manual");
 	}
 
 	public function cek_data_perkara_penetapan()
@@ -326,6 +407,11 @@ class Produk extends CI_Controller
 	public function isi_sembarang()
 	{
 		echo json_encode($this->M_produk->isi_sembarang());
+	}
+
+	public function getFoto()
+	{
+		echo json_encode($this->M_produk->getFoto());
 	}
 
 }
