@@ -12,6 +12,7 @@ class Produk extends CI_Controller
 		parent:: __construct();
 		$this->load->model("M_produk");
 		$this->load->model("M_informasi");
+		$this->load->model("M_pendaftaran");
 		$this->load->model("M_user");
 		$this->load->library("form_validation");
 		if(!$this->M_user->isLogin())
@@ -88,10 +89,12 @@ class Produk extends CI_Controller
 			else if($respon=="foto kosong")
 			{
 				$this->session->set_flashdata('respon',"Mohon mengambil foto");
+				redirect('produk/ac_tambah');
 			}
 			else if($respon=="sudah ambil")
 			{
 				$this->session->set_flashdata('respon',"Akta cerai sudah pernah diambil");
+				redirect('produk/ac_tambah');
 			}
 		}
 		$this->load->view("produk/ac/tambah");
@@ -113,10 +116,12 @@ class Produk extends CI_Controller
 			else if($respon=="foto kosong")
 			{
 				$this->session->set_flashdata('respon',"Mohon mengambil foto");
+				redirect('produk/ac/manual');
 			}
 			else if($respon=="sudah ambil")
 			{
 				$this->session->set_flashdata('respon',"Akta cerai sudah pernah diambil");
+				redirect('produk/ac/manual');
 			}
 		}
 		$this->load->view("produk/ac/tambah_manual");
@@ -204,6 +209,7 @@ class Produk extends CI_Controller
 			else if($respon=="foto kosong")
 			{
 				$this->session->set_flashdata('respon',"Mohon mengambil foto");
+				redirect('produk/putusan_tambah');
 			}
 		}
 		$this->load->view("produk/putusan/tambah");
@@ -225,6 +231,7 @@ class Produk extends CI_Controller
 			else if($respon=="foto kosong")
 			{
 				$this->session->set_flashdata('respon',"Mohon mengambil foto");
+				redirect('produk/putusan/manual');
 			}
 		}
 		$this->load->view("produk/putusan/tambah_manual");
@@ -312,6 +319,7 @@ class Produk extends CI_Controller
 			else if($respon=="foto kosong")
 			{
 				$this->session->set_flashdata('respon',"Mohon mengambil foto");
+				redirect('produk/penetapan_tambah');
 			}
 		}
 		$this->load->view("produk/penetapan/tambah");
@@ -333,6 +341,7 @@ class Produk extends CI_Controller
 			else if($respon=="foto kosong")
 			{
 				$this->session->set_flashdata('respon',"Mohon mengambil foto");
+				redirect('produk/penetapan/manual');
 			}
 		}
 		$this->load->view("produk/penetapan/tambah_manual");
@@ -401,6 +410,7 @@ class Produk extends CI_Controller
 		$data['ac'] = $this->M_produk->getStatistik('ac');
 		$data['putusan'] = $this->M_produk->getStatistik('putusan');
 		$data['penetapan'] = $this->M_produk->getStatistik('penetapan');
+		$data['pendaftaran'] = $this->M_pendaftaran->getStatistik();
 		echo json_encode($data);
 	}
 
@@ -412,6 +422,11 @@ class Produk extends CI_Controller
 	public function getFoto()
 	{
 		echo json_encode($this->M_produk->getFoto());
+	}
+
+	public function getFoto1()
+	{
+		echo json_encode($this->M_produk->getFoto1());
 	}
 
 }

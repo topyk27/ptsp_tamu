@@ -65,17 +65,15 @@
 		var bulan = now.getMonth()+1;
 		moment.locale('id');
 		var nama_bulan = moment().format('MMMM');
-		var tkn = "<?php echo $this->session->userdata("ptsp_tamu_tkn"); ?>";
-		var nama_pa = "<?php echo $this->session->userdata("nama_pa"); ?>";
-		var nama_pa_pendek = "<?php echo $this->session->userdata("nama_pa_pendek"); ?>";
+		var tkn = "<?php echo $this->session->userdata('ptsp_tamu_tkn'); ?>";
+		var nama_pa = "<?php echo $this->session->userdata('nama_pa'); ?>";
+		var nama_pa_pendek = "<?php echo $this->session->userdata('nama_pa_pendek'); ?>";
 		function jumlah_hari(bulan, tahun) {
 			return new Date(tahun,bulan,0).getDate();
 		}
 
 		$(document).ready(function(){
-			// var tkn = "<?php echo $this->session->userdata("ptsp_tamu_tkn"); ?>";
-			// var nama_pa = "<?php echo $this->session->userdata("nama_pa"); ?>";
-			// var nama_pa_pendek = "<?php echo $this->session->userdata("nama_pa_pendek"); ?>";
+			
 			$.ajax({
 				url: "https://raw.githubusercontent.com/topyk27/ptsp_tamu/main/asset/mine/token/token.json",
 				method: 'GET',
@@ -142,11 +140,13 @@
 					var ac_val = [];
 					var pts_val = [];
 					var pnt_val = [];
+					var daftar_val = [];
 					var ketemu = false;
 					var informasi = data.informasi;
 					var ac = data.ac;
 					var putusan = data.putusan;
 					var penetapan = data.penetapan;
+					var pendaftaran = data.pendaftaran;
 
 					for(var i =1; i<=hari; i++)
 					{
@@ -195,6 +195,17 @@
 								break;
 							}
 						}
+
+						ketemu = false;
+						for(var e in pendaftaran)
+						{
+							if(i==pendaftaran[e].tanggal)
+							{
+								daftar_val.push(parseInt(pendaftaran[e].total));
+								ketemu = true;
+								break;
+							}
+						}
 						if(!ketemu)
 						{
 							label.push(i);
@@ -202,6 +213,7 @@
 							ac_val.push(0);
 							pts_val.push(0);
 							pnt_val.push(0);
+							daftar_val.push(0);
 						}
 					}
 
@@ -257,6 +269,18 @@
 								data : pnt_val,
 
 							},
+							{
+								label : 'Pendaftaran',
+								backgroundColor : 'rgba(255,99,71,1)',
+								borderColor : 'rgba(0,0,0,1,0.8)',
+								pointRadius : false,
+								pointColor : '#3b8bba',
+								pointStrokeColor : 'rgba(60,141,188,1)',
+								pointHighlightFill : '#fff',
+								pointHighlightStroke : 'rgba(60,141,188,1)',
+								data : daftar_val,
+
+							},
 
 						]
 					}
@@ -266,10 +290,12 @@
 					var temp1 = areaChartData.datasets[1];
 					var temp2 = areaChartData.datasets[2];
 					var temp3 = areaChartData.datasets[3];
+					var temp4 = areaChartData.datasets[4];
 					barChartData.datasets[0] = temp0;
 					barChartData.datasets[1] = temp1;
 					barChartData.datasets[2] = temp2;
 					barChartData.datasets[3] = temp3;
+					barChartData.datasets[4] = temp4;
 
 					var barChartOptions = {
 					  responsive              : true,

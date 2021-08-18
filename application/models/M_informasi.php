@@ -61,7 +61,8 @@ class M_informasi extends CI_Model
 		$img = str_replace('data:image/png;base64,', '', $img);
 		$img = str_replace(' ', '+', $img);
 		$data = base64_decode($img);
-		$file_name = $this->nama;
+		$file_name = str_replace(' ', '_', $this->nama);
+		$file_name = str_replace("'", "", $file_name);
 		$file = $path.$file_name.'.png';
 		if(file_exists($file) && !$update)
 		{
@@ -89,6 +90,7 @@ class M_informasi extends CI_Model
 			return array_map('unlink', glob(FCPATH."upload/".$layanan."/".$filename.".*"));
 		}
 	}
+
 
 	public function getAll()
 	{
@@ -169,6 +171,7 @@ class M_informasi extends CI_Model
 		$this->keterangan = $post['keterangan'];
 		if($post['foto'] != "kosong")
 		{
+			$this->_deleteImage("informasi", $id);
 			$this->foto = $this->_base64upload('informasi',$post['foto'],true);
 
 		}

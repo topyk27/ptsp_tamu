@@ -84,7 +84,7 @@
 										<div id="sembunyikan" style="display: none;">
 											<div class="form-group">
 												<label for="nama">Nama</label>
-												<input type="text" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" name="nama" value="<?php echo set_value('nama'); ?>" placeholder="Nama Lengkap" required>
+												<input type="text" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" name="nama" value="<?php echo set_value('nama'); ?>" placeholder="Nama Lengkap" required readonly>
 												<div class="invalid-feedback">
 													<?php echo form_error('nama') ?>
 												</div>
@@ -103,16 +103,7 @@
 													<?php echo form_error('tanggal') ?>
 												</div>
 											</div>
-											<!-- work -->
-											<!-- <div class="form-group">
-												<label for="foto">Foto</label>
-												<input type="file" class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>" name="foto" >
-												<div class="invalid-feedback">
-													<?php echo form_error('foto'); ?>
-												</div>
-											</div> -->
-											<!-- end work -->
-											<!-- tes ambil gambar -->
+											
 							              	<div class="form-group">
 							              		<label for="foto">Foto</label>
 							              		<div class="row">

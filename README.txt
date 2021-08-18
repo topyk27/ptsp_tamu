@@ -8,8 +8,8 @@ adalah aplikasi untuk mendata pengunjung yang datang ke Pelayanan Terpadu Satu P
 1. Pindahkan folder ini ke komputer server yang sama dengan folder SIPP.
 2. Buat database dengan nama `ptsp_tamu` di server yang sama dengan database SIPP.
 3. Silahkan import file sql yang ada di folder ini.
-4. Buka file `application/config/database.php` dan `aplication/config/ptsp_tamu_config.php`.
-5. Sesuaikan username, password, dan databasenya.
+4. Buka file `application/config/database.php` dan `application/config/ptsp_tamu_config.php`.
+5. Sesuaikan username, password, dan databasenya.  
 `database.php`
 ```
 $db['default'] = array(
@@ -45,8 +45,14 @@ chrome://flags/#unsafely-treat-insecure-origin-as-secure
 ```
 9. Masukkan alamat server anda di kotak `Insecure origins treated as secure` setelah itu pilih dropdown di sebelahnya menjadi Enabled.
 ![alt text](https://github.com/topyk27/ptsp_tamu/blob/main/asset/img/img-1.png?raw=true)
-11. Kemudian apabila muncul gambar seperti di bawah ini, silahkan pilih Allow.
+10. Kemudian apabila muncul gambar seperti di bawah ini, silahkan pilih Allow.
 ![alt text](https://github.com/topyk27/ptsp_tamu/blob/main/asset/img/img-2.png?raw=true)
+
+## Frequently Asked Questions
+- Upload foto gagal atau tidak masuk?
+>Ubah permission untuk folder `aset/img` dan `upload` menjadi 777 biar yakin
+---
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

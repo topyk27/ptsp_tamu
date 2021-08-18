@@ -76,7 +76,7 @@
 										<div id="sembunyikan" style="display: none;">
 											<div class="form-group">
 												<label for="nama">Nama</label>
-												<input type="text" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" name="nama" value="<?php echo set_value('nama'); ?>" placeholder="Nama Lengkap" required>
+												<input type="text" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" name="nama" value="<?php echo set_value('nama'); ?>" placeholder="Nama Lengkap" required readonly>
 												<div class="invalid-feedback">
 													<?php echo form_error('nama') ?>
 												</div>
@@ -96,35 +96,7 @@
 												</div>
 											</div>
 											<!-- work -->
-											<!-- <div class="form-group">
-												<label for="foto">Foto</label>
-												<input type="file" class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>" name="foto" >
-												<div class="invalid-feedback">
-													<?php echo form_error('foto'); ?>
-												</div>
-											</div> -->
-											<!-- end work -->
-											<!-- ambil gambar -->
-											<!-- <div class="form-group">
-												<label for='foto'>Foto</label>
-												<div class="camera col-md-12">
-													<div class="row">
-														<video id="video" class="col-md-12 h-auto">Video tidak tersedia</video>
-													</div>
-													<div class="row mt-2 mb-2">
-														<div class="col-md-12">
-															<button id="startbutton" class="btn btn-warning btn-block">Ambil foto</button>
-														</div>
-													</div>
-													<canvas id="canvas" style="display: none;"></canvas>
-													<div class="output col-md-12">
-														<div class="row">
-															<img id="photo" class="col-md-12 h-auto" alt="Gambar kamera akan muncul di kotak ini">
-														</div>
-														<input type="hidden" class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>" name="foto" id="foto" >
-													</div>
-												</div>
-											</div> -->
+											
 							              	<div class="form-group">
 							              		<label for="foto">Foto</label>
 							              		<div class="row">
@@ -226,23 +198,7 @@
 					}
 				});
 			});
-			// $("select[name='pihak']").on('change', function(){
-			// 	if(this.value == "p")
-			// 	{
-			// 		$("input[name='nama']").val(nama_pihak[0]);
-			// 		$("#sembunyikan").show();
-			// 	}
-			// 	else if(this.value == "t")
-			// 	{
-			// 		$("input[name='nama']").val(nama_pihak[1]);
-			// 		$("#sembunyikan").show();
-			// 	}
-			// 	else
-			// 	{
-			// 		$("input[name='nama']").val("");
-			// 		$("#sembunyikan").hide();
-			// 	}
-			// });
+			
 
 			function getFoto() {
 
@@ -257,7 +213,7 @@
 					},
 					success: function(data)
 					{
-						console.log(data);
+						
 						$("#box_foto_pendaftaran").attr("href","<?php echo base_url("upload/pendaftaran/") ?>"+data);
 						$("#box_foto_pendaftaran").attr("data-lightbox","img");
 						$("#box_foto_pendaftaran").attr("data-title",nama_pihak[0]);

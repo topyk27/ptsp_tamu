@@ -45,10 +45,12 @@ class Pendaftaran extends CI_Controller
 			else if($respon == false)
 			{
 				$this->session->set_flashdata('respon',"Mohon mengambil foto");
+				redirect("pendaftaran/tambah");
 			}
 			else
 			{
 				$this->session->set_flashdata('respon',"Ada kesalahan, mohon periksa nomor perkara apakah sudah terdaftar atau belum");
+				redirect("pendaftaran/tambah");
 			}
 		}
 		$this->load->view("pendaftaran/tambah");
@@ -88,11 +90,12 @@ class Pendaftaran extends CI_Controller
 				else if($respon=="tidak ada foto")
 				{
 					$this->session->set_flashdata('respon',"Mohon mengambil foto");
+					redirect("pendaftaran/ubah/".$id);
 				}
 				else
 				{
 					$this->session->set_flashdata('success', 'Data gagal diubah');
-					redirect("pendaftaran");
+					redirect("pendaftaran/ubah/".$id);
 				}
 			}
 			$data['data_pendaftaran'] = $pendaftaran->getById($id);

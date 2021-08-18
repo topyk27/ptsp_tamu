@@ -52,28 +52,28 @@
 									<div class="card-body">
 										<div class="form-group">
 											<label for="jenis_perkara">Jenis Perkara</label>
-											<input type="text" name="jenis_perkara" class="form-control <?php echo form_error('jenis_perkara') ? 'is-invalid':'' ?>" value="<?php if(empty(set_value('jenis_perkara'))) { echo (strpos($data_pendaftaran->no_perkara, "Pdt.G")) ? "Gugatan" : "Permohonan"; } else{ echo set_value('jenis_perkara');} ?>" required readonly>
+											<input type="text" name="jenis_perkara" class="form-control text-capitalize <?php echo form_error('jenis_perkara') ? 'is-invalid':'' ?>" value="<?php echo (strpos($data_pendaftaran->no_perkara, "Pdt.G")) ? "gugatan" : "permohonan"; ?>" required readonly>
 											<div class="invalid-feedback">
 												<?php echo form_error('jenis_perkara'); ?>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="no_perkara">NO Perkara</label>
-											<input type="text" name="no_perkara" class="form-control <?php echo form_error('no_perkara') ? 'is-invalid' : '' ?>" value="<?php if(empty(set_value('no_perkara'))) { echo $data_pendaftaran->no_perkara; } else{ echo set_value('no_perkara');} ?>" required readonly>
+											<input type="text" name="no_perkara" class="form-control <?php echo form_error('no_perkara') ? 'is-invalid' : '' ?>" value="<?php echo $data_pendaftaran->no_perkara; ?>" required readonly>
 											<div class="invalid-feedback">
 												<?php echo form_error('no_perkara'); ?>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="tanggal">Tanggal Pendaftaran</label>
-											<input type="text" name="tanggal" class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>" value="<?php if(empty(set_value('tanggal'))) { echo $data_pendaftaran->tanggal_pendaftaran; } else{ echo set_value('tanggal', date('Y-m-d'));} ?>" required readonly>
+											<input type="text" name="tanggal" class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>" value="<?php echo $data_pendaftaran->tanggal_pendaftaran; ?>" required readonly>
 											<div class="invalid-feedback">
 												<?php echo form_error('tanggal'); ?>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="penggugat">Penggugat</label>
-											<input type="text" name="penggugat" class="form-control <?php echo form_error('penggugat') ? 'is-invalid':'' ?>" value="<?php if(empty(set_value('penggugat'))) { echo $data_pendaftaran->penggugat; } else{ echo set_value('penggugat');} ?>" required readonly>
+											<input type="text" name="penggugat" class="form-control <?php echo form_error('penggugat') ? 'is-invalid':'' ?>" value="<?php echo $data_pendaftaran->penggugat; ?>" required readonly>
 											<div class="invalid-feedback">
 												<?php echo form_error('penggugat'); ?>
 											</div>
@@ -81,7 +81,7 @@
 										<?php if(strpos($data_pendaftaran->no_perkara, "Pdt.G")) : ?>
 											<div class="form-group">
 												<label for="tergugat">Tergugat</label>
-												<input type="text" name="tergugat" class="form-control <?php echo form_error('tergugat') ? 'is-invalid':'' ?>" value="<?php if(empty(set_value('tergugat'))) { echo $data_pendaftaran->tergugat; } else{ echo set_value('tergugat');} ?>" required readonly>
+												<input type="text" name="tergugat" class="form-control <?php echo form_error('tergugat') ? 'is-invalid':'' ?>" value="<?php echo $data_pendaftaran->tergugat; ?>" required readonly>
 												<div class="invalid-feedback">
 													<?php echo form_error('tergugat'); ?>
 												</div>

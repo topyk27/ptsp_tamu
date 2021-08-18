@@ -51,35 +51,35 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="tanggal">Tanggal</label>
-                    <input type="text" class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>" name="tanggal" value="<?php if(empty(set_value('tanggal'))) { echo $data_informasi->tanggal; } else{ echo set_value('tanggal', date('Y-m-d'));} ?>" required>
+                    <input type="text" class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>" name="tanggal" value="<?php echo $data_informasi->tanggal; ?>" required>
                     <div class="invalid-feedback">
                       <?php echo form_error('tanggal') ?>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="nama">Nama</label>
-                    <input type="text" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" name="nama" value="<?php if(empty(set_value('nama'))) { echo $data_informasi->nama; } else{ echo set_value('nama');} ?>" placeholder="Nama Lengkap" required>
+                    <input type="text" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" name="nama" value="<?php echo $data_informasi->nama; ?>" placeholder="Nama Lengkap" required>
                     <div class="invalid-feedback">
                       <?php echo form_error('nama') ?>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="alamat">Alamat</label>
-                    <input type="text" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" name="alamat" value="<?php if(empty(set_value('alamat'))) { echo $data_informasi->alamat; } else{ echo set_value('alamat');} ?>" placeholder="Alamat Lengkap" required>
+                    <input type="text" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" name="alamat" value="<?php echo $data_informasi->alamat; ?>" placeholder="Alamat Lengkap" required>
                     <div class="invalid-feedback">
                       <?php echo form_error('alamat') ?>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="telepon">HP / Telepon</label>
-                    <input type="text" class="form-control <?php echo form_error('telepon') ? 'is-invalid':'' ?>" name="telepon" value="<?php if(empty(set_value('telepon'))) { echo $data_informasi->telepon; } else{ echo set_value('telepon');} ?>" placeholder="HP / Telepon" required>
+                    <input type="text" class="form-control <?php echo form_error('telepon') ? 'is-invalid':'' ?>" name="telepon" value="<?php echo $data_informasi->telepon; ?>" placeholder="HP / Telepon" required>
                     <div class="invalid-feedback">
                       <?php echo form_error('telepon') ?>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="pekerjaan">Pekerjaan</label>
-                    <input type="text" class="form-control <?php echo form_error('pekerjaan') ? 'is-invalid':'' ?>" name="pekerjaan" value="<?php if(empty(set_value('pekerjaan'))) { echo $data_informasi->pekerjaan; } else{ echo set_value('pekerjaan');} ?>" placeholder="Pekerjaan" required>
+                    <input type="text" class="form-control <?php echo form_error('pekerjaan') ? 'is-invalid':'' ?>" name="pekerjaan" value="<?php echo $data_informasi->pekerjaan; ?>" placeholder="Pekerjaan" required>
                     <div class="invalid-feedback">
                       <?php echo form_error('pekerjaan') ?>
                     </div>
@@ -96,14 +96,14 @@
                   </div>
                   <div class="form-group">
                     <label for="keterangan">Keterangan Informasi</label>
-                    <input type="text" class="form-control <?php echo form_error('keterangan') ? 'is-invalid':'' ?>" name="keterangan" value="<?php if(empty(set_value('keterangan'))) { echo $data_informasi->keterangan; } else{ echo set_value('keterangan');} ?>" placeholder="Keterangan Informasi" required>
+                    <input type="text" class="form-control <?php echo form_error('keterangan') ? 'is-invalid':'' ?>" name="keterangan" value="<?php echo $data_informasi->keterangan; ?>" placeholder="Keterangan Informasi" required>
                     <div class="invalid-feedback">
                       <?php echo form_error('keterangan') ?>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="foto">Foto</label>
-                    <div class="camera col-md-12">
+                    <div class="camera col-md-6">
                       <div class="row">
                         <video id="video" class="col-md-12 h-auto">Video tidak tersedia</video>
                       </div>
@@ -122,6 +122,7 @@
                       </div>
                     </div>
                   </div>
+                  
                 </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>

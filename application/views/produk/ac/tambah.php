@@ -108,56 +108,13 @@
 			                    <?php echo form_error('nama') ?>
 			                  </div>
 			                </div>
-			                <!-- <div class="form-group">
-			                  <label for="no_perkara">NO Perkara</label>
-			                  <input type="text" class="form-control <?php echo form_error('no_perkara') ? 'is-invalid':'' ?>" name="no_perkara" value="<?php echo set_value('no_perkara'); ?>" placeholder="Nomor Perkara" required>
-			                  <div class="invalid-feedback">
-			                    <?php echo form_error('no_perkara') ?>
-			                  </div>
-			                </div> -->
-			                <!-- <div class="form-row">
-			                	<div class="col-md-4 mb-3">
-			                		<label for="no_perkara">Nomor Perkara</label>
-			                		<input type="text" class="form-control <?php echo form_error('no_perkara') ? 'is-invalid' : '' ?>" name="no_perkara" value="<?php echo set_value('no_perkara'); ?>" placeholder="1262" required="" id="no_perkara">
-			                		<div class="invalid-feedback">
-			                		  <?php echo form_error('no_perkara') ?>
-			                		</div>
-			                	</div>
-			                	<div class="col-md-4 mb-3">
-			                		<label for="no_perkara_tahun">Tahun</label>
-			                		<input type="text" class="form-control <?php echo form_error('no_perkara_tahun') ? 'is-invalid' : '' ?>" name="no_perkara_tahun" value="<?php echo set_value('no_perkara_tahun'); ?>" placeholder="2019" required="">
-			                		<div class="invalid-feedback">
-			                		  <?php echo form_error('no_perkara_tahun') ?>
-			                		</div>
-			                	</div> -->
-			                <!-- <div class="form-group">
-			                  <label for="no_ac">NO Akta Cerai</label>
-			                  <input type="text" class="form-control <?php echo form_error('no_ac') ? 'is-invalid':'' ?>" name="no_ac" value="<?php echo set_value('no_ac'); ?>" placeholder="Nomor Akta Cerai" required>
-			                  <div class="invalid-feedback">
-			                    <?php echo form_error('no_ac') ?>
-			                  </div>
-			                </div> -->
+			                
 
 			                <div class="form-group">
 			                	<label for="no_ac">Nomor Akta Cerai</label>
 			                	<input type="text" class="form-control <?php echo form_error('no_ac') ? 'is-invalid':'' ?>" name="no_ac" value="<?php echo set_value('no_ac'); ?>" required readonly>
 			                </div>
-			                <!-- <div class="form-row">
-			                	<div class="col-md-6 mb-3">
-			                		<label for="no_ac">Nomor Akta Cerai</label>
-			                		<input type="text" class="form-control <?php echo form_error('no_ac') ? 'is-invalid' : '' ?>" value="<?php echo set_value('no_ac'); ?>" name="no_ac" placeholder="107" required="">
-			                		<div class="invalid-feedback">
-			                		  <?php echo form_error('no_ac') ?>
-			                		</div>
-			                	</div>
-			                	<div class="col-md-6 mb-3">
-			                		<label for="no_ac_tahun">Tahun</label>
-			                		<input type="text" class="form-control <?php echo form_error('no_ac_tahun') ? 'is-invalid' : '' ?>" value="<?php echo set_value('no_ac_tahun'); ?>" name="no_ac_tahun" placeholder="2020" required="">
-			                		<div class="invalid-feedback">
-			                		  <?php echo form_error('no_ac_tahun') ?>
-			                		</div>
-			                	</div>
-			                </div> -->
+			                
 			                
 			                <div class="form-group">
 			                  <label for="no_hp">Nomor HP</label>
@@ -173,15 +130,7 @@
 			                    <?php echo form_error('tanggal') ?>
 			                  </div>
 			                </div>
-			                <!-- work -->
-			                <!-- <div class="form-group">
-			                	<label for="foto">Foto</label>
-			                	<input type="file" class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>" name="foto" >
-			                	<div class="invalid-feedback">
-			                		<?php echo form_error('foto'); ?>
-			                	</div>
-			                </div> -->
-			                <!-- end work -->
+			                
 			              	<!-- tes -->
 			              	<div class="form-group">
 			              		<label for="foto">Foto</label>

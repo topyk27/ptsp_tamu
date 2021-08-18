@@ -217,10 +217,11 @@ class M_pendaftaran extends CI_Model
 	public function update($id)
 	{
 		$post = $this->input->post();
-		$jenis_perkara = ($post['jenis_perkara']=="Gugatan") ? "Pdt.G" : "Pdt.P";
+		$jenis_perkara = ($post['jenis_perkara']=="gugatan") ? "Pdt.G" : "Pdt.P";
 		$this->no_perkara = $post['no_perkara'];
 		if($post['foto'] != "kosong")
 		{
+			$this->_deleteImage($id);
 			$foto = $this->_base64upload($post['foto'],$jenis_perkara);
 			// return "ok";
 		}
@@ -265,6 +266,14 @@ class M_pendaftaran extends CI_Model
 		$statement = "UPDATE pendaftaran SET tanggal_pendaftaran='$tanggal_pendaftaran', jenis_perkara='$jenis_perkara', penggugat=".$this->db->escape($penggugat).", tergugat=".$this->db->escape($tergugat)." WHERE id='$id' ";
 		$this->db->query($statement);
 		return "ok";
+	}
+
+	public function getStatistik()
+	{
+		$bulan = date('n');
+		$statement = "SELECT COUNT(id) as total, DATE_FORMAT(tanggal_pendaftaran,'%e') AS tanggal FROM pendaftaran WHERE MONTH(tanggal_pendaftaran) = '$bulan' GROUP BY tanggal_pendaftaran";
+		$query = $this->db->query($statement);
+		return $query->result();
 	}
 }
  ?>

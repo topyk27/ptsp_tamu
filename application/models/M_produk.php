@@ -396,6 +396,17 @@ class M_produk extends CI_Model
 		return ($query->num_rows() == 0) ? $jenis_perkara."/default.png" : $query->row()->foto;
 	}
 
+	public function getFoto1()
+	{
+		$post = $this->input->post();
+		$jenis_perkara = $post['jenis_perkara'];
+		$no_perkara = $post['no_perkara'];
+		$nama_pa_pendek = $this->session->userdata('nama_pa_pendek');
+		$statement = "SELECT foto FROM pendaftaran WHERE no_perkara='$no_perkara' LIMIT 1";
+		$query = $this->db->query($statement);
+		return ($query->num_rows() == 0) ? $jenis_perkara."/default.png" : $query->row()->foto;
+	}
+
 	public function cek_data_perkara_gugatan_putusan()
 	{
 		$post = $this->input->post();
