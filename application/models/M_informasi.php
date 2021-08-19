@@ -161,7 +161,7 @@ class M_informasi extends CI_Model
 	public function update($id)
 	{
 		$post = $this->input->post();
-		// $this->id = $post['id'];
+		$this->id = $id;
 		$this->tanggal = $post['tanggal'];
 		$this->nama = $post['nama'];
 		$this->alamat = $post['alamat'];
@@ -179,6 +179,7 @@ class M_informasi extends CI_Model
 		{
 			$this->foto = $post['old_foto'];
 		}
+		$this->diperbarui = date('Y-m-d H:i:s');
 		$this->db->update($this->table, $this, ['id' => $id]);
 		return $this->db->affected_rows();
 		// return $this->telepon;
