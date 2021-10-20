@@ -106,6 +106,11 @@
                       <?php echo form_error('keterangan') ?>
                     </div>
                   </div>
+                  <?php
+                    $this->config->load('ptsp_tamu_config',TRUE);
+                    $ambil_foto = $this->config->item('informasi_foto','ptsp_tamu_config');
+                    if($ambil_foto) :
+                   ?>
                   <div class="form-group">
                     <label for="foto">Foto</label>
                     <div class="camera col-md-6">
@@ -126,6 +131,7 @@
                       </div>
                     </div>
                   </div>
+                  <?php endif; ?>
                 </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
@@ -190,6 +196,7 @@ $(document).ready(function () {
       };
       date_input.datepicker(options);
 
+      <?php if($ambil_foto): ?>
       // ambil gambar
             var width = 720;
             var height = 0;
@@ -263,6 +270,7 @@ $(document).ready(function () {
                 }
             }
       // end ambil gambar
+      <?php endif; ?>
 
       <?php
         if($this->session->userdata('error')) :

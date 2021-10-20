@@ -101,6 +101,11 @@
                       <?php echo form_error('keterangan') ?>
                     </div>
                   </div>
+                  <?php
+                    $this->config->load('ptsp_tamu_config',TRUE);
+                    $ambil_foto = $this->config->item('informasi_foto','ptsp_tamu_config');
+                    if($ambil_foto) :
+                   ?>
                   <div class="form-group">
                     <label for="foto">Foto</label>
                     <div class="camera col-md-6">
@@ -118,11 +123,12 @@
                           <img id="photo" class="col-md-12 h-auto" alt="Gambar kamera akan muncul di kotak ini" src="<?php echo base_url('upload/informasi/'); echo $data_informasi->foto; ?>">
                         </div>
                         <input type="hidden" class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>" name="foto" id="foto" >
-                        <input type="hidden" name="old_foto" value="<?php echo $data_informasi->foto; ?>">
+                        
                       </div>
                     </div>
                   </div>
-                  
+                  <?php endif; ?>
+                  <input type="hidden" name="old_foto" value="<?php echo $data_informasi->foto; ?>">
                 </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
@@ -187,6 +193,7 @@ $(document).ready(function () {
       };
       date_input.datepicker(options);
 
+          <?php if($ambil_foto) : ?>
           // ambil gambar
               var width = 720;
               var height = 0;
@@ -262,6 +269,7 @@ $(document).ready(function () {
                   }
               }
           // end ambil gambar
+          <?php endif; ?>
   });
 </script>
 </body>

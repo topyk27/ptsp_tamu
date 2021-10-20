@@ -133,6 +133,8 @@ class M_informasi extends CI_Model
 	public function insert()
 	{
 		// $this->load->helper('date');
+		$this->config->load('ptsp_tamu_config',TRUE);
+		$ambil_foto = $this->config->item('informasi_foto','ptsp_tamu_config');
 		$post = $this->input->post();
 		$this->tanggal = $post['tanggal'];
 		$this->nama = $post['nama'];
@@ -141,15 +143,18 @@ class M_informasi extends CI_Model
 		$this->pekerjaan = $post['pekerjaan'];
 		$this->informasi = $post['informasi'];
 		$this->keterangan = $post['keterangan'];
-		if($post['foto'] != "kosong")
+		if($post['foto'] != "kosong" && $ambil_foto == 1)
 		{
 			
 			$this->foto = $this->_base64upload('informasi',$post['foto'],false);
 
 		}
+		else if($ambil_foto == 0)
+		{
+			$this->foto = "default.png";
+		}
 		else
 		{
-			// $this->foto = "default.png";
 			return "foto kosong";
 		}
 		$this->diperbarui = date('Y-m-d H:i:s');
@@ -160,6 +165,8 @@ class M_informasi extends CI_Model
 
 	public function update($id)
 	{
+		$this->config->load('ptsp_tamu_config',TRUE);
+		$ambil_foto = $this->config->item('informasi_foto','ptsp_tamu_config');
 		$post = $this->input->post();
 		$this->id = $id;
 		$this->tanggal = $post['tanggal'];
@@ -169,7 +176,7 @@ class M_informasi extends CI_Model
 		$this->pekerjaan = $post['pekerjaan'];
 		$this->informasi = $post['informasi'];
 		$this->keterangan = $post['keterangan'];
-		if($post['foto'] != "kosong")
+		if($post['foto'] != "kosong" && $ambil_foto == 1)
 		{
 			$this->_deleteImage("informasi", $id);
 			$this->foto = $this->_base64upload('informasi',$post['foto'],true);
