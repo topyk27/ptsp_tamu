@@ -52,7 +52,7 @@ class Produk extends CI_Controller
 
 	public function validate_name($str)
 	{
-		if (!preg_match("/^[a-zA-Z\sg\'\.]*$/", $str)) {
+		if (!preg_match("/^[a-zA-Z\sg\'\.\,]*$/", $str)) {
 			$this->form_validation->set_message('validate_name', 'Silahkan isi baris %s dengan menggunakan huruf saja.');
             return FALSE;
 		}

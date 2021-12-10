@@ -151,7 +151,7 @@
 					for(var i =1; i<=hari; i++)
 					{
 						label.push(i);
-						ketemu = false;
+						// ketemu = false;
 						for(var a in informasi)
 						{
 							if(i==informasi[a].tanggal)
@@ -163,7 +163,7 @@
 							}
 						}
 
-						ketemu = false;
+						// ketemu = false;
 						for(var b in ac)
 						{
 							if(i==ac[b].tanggal)
@@ -174,7 +174,7 @@
 							}
 						}
 
-						ketemu = false;
+						// ketemu = false;
 						for(var c in putusan)
 						{
 							if(i==putusan[c].tanggal)
@@ -185,7 +185,7 @@
 							}
 						}
 
-						ketemu = false;
+						// ketemu = false;
 						for(var d in penetapan)
 						{
 							if(i==penetapan[d].tanggal)
@@ -196,7 +196,7 @@
 							}
 						}
 
-						ketemu = false;
+						// ketemu = false;
 						for(var e in pendaftaran)
 						{
 							if(i==pendaftaran[e].tanggal)
@@ -206,15 +206,15 @@
 								break;
 							}
 						}
-						if(!ketemu)
-						{
-							label.push(i);
-							inf_val.push(0)
-							ac_val.push(0);
-							pts_val.push(0);
-							pnt_val.push(0);
-							daftar_val.push(0);
-						}
+						// if(!ketemu)
+						// {
+						// 	label.push(i);
+						// 	inf_val.push(0)
+						// 	ac_val.push(0);
+						// 	pts_val.push(0);
+						// 	pnt_val.push(0);
+						// 	daftar_val.push(0);
+						// }
 					}
 
 					// bar
