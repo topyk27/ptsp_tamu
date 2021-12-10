@@ -36,8 +36,8 @@ $config['ini'] = "ptsp_tamu";
 6. Buka browser dan masukkan `IP SERVER/ptsp_tamu`.
 7. Data login
 ```
-username : admin
-password : iniadmin
+username : rahasia
+password : tidakpakaipassword
 ```
 8. Lakukan pengaturan browser dengan mengizinkan penggunaan kamera untuk mengambil gambar pihak yang berkunjung ke PTSP. Cara [Izin Kamera.](https://support.google.com/chrome/answer/2693767). Apabila server tidak menggunakan https silahkan masukkan alamat ini pada browser chrome anda. Untuk pengguna browser lain bisa dicari di google untuk caranya.
 ```
