@@ -8,6 +8,19 @@
 	<?php $this->load->view("_partials/css.php") ?>
 	<style type="text/css">
 		@media print{@page {size:landscape;}}
+		table.table-bordered{
+		    border:1px solid black !important;
+		  }
+		table.table-bordered > thead > tr > th{
+		    border:1px solid black !important;
+		    vertical-align: middle;
+		}
+		table.table-bordered > tbody > tr > th{
+		    border:1px solid black !important;
+		}
+		table.table-bordered > tbody > tr > td{
+		    border:1px solid black !important;
+		}
 	</style>
 </head>
 <body>

@@ -148,73 +148,119 @@
 					var penetapan = data.penetapan;
 					var pendaftaran = data.pendaftaran;
 
+					for(var aa=1; aa<=hari; aa++)
+					{
+						let a_ketemu = false;
+						for(var a in informasi)
+						{
+							if(aa==informasi[a].tanggal)
+							{
+								inf_val.push(parseInt(informasi[a].total));
+								a_ketemu = true;
+								break;
+							}
+							else
+							{
+								a_ketemu = false;
+							}
+						}
+						if(!a_ketemu)
+						{
+							inf_val.push(0);
+						}
+					}
+
+					for(var bb=1; bb<=hari; bb++)
+					{
+						let b_ketemu = false;
+						for(var b in ac)
+						{
+							if(bb==ac[b].tanggal)
+							{
+								ac_val.push(parseInt(ac[b].total));
+								b_ketemu = true;
+								break;
+							}
+							else
+							{
+								b_ketemu = false;
+							}
+						}
+						if(!b_ketemu)
+						{
+							ac_val.push(0);
+						}
+					}
+
+					for(var cc=1; cc<=hari; cc++)
+					{
+						let c_ketemu = false;
+						for(var c in putusan)
+						{
+							if(cc==putusan[c].tanggal)
+							{
+								pts_val.push(parseInt(putusan[c].total));
+								c_ketemu = true;
+								break;
+							}
+							else
+							{
+								c_ketemu = false;
+							}
+						}
+						if(!c_ketemu)
+						{
+							pts_val.push(0);
+						}
+					}
+
+					for(var dd=1; dd<=hari; dd++)
+					{
+						let d_ketemu = false;
+						for(var d in penetapan)
+						{
+							if(dd==penetapan[d].tanggal)
+							{
+								pnt_val.push(parseInt(penetapan[d].total));
+								d_ketemu = true;
+								break;
+							}
+							else
+							{
+								d_ketemu = false;
+							}
+						}
+						if(!d_ketemu)
+						{
+							pnt_val.push(0);
+						}
+					}
+
+					for(var ee=1; ee<=hari; ee++)
+					{
+						let e_ketemu = false;
+						for(var e in pendaftaran)
+						{
+							if(ee==pendaftaran[e].tanggal)
+							{
+								daftar_val.push(parseInt(pendaftaran[e].total));
+								e_ketemu = true;
+								break;
+							}
+							else
+							{
+								e_ketemu = false;
+							}
+						}
+						if(!e_ketemu)
+						{
+							daftar_val.push(0);
+						}
+					}
+
 					for(var i =1; i<=hari; i++)
 					{
 						label.push(i);
-						// ketemu = false;
-						for(var a in informasi)
-						{
-							if(i==informasi[a].tanggal)
-							{
-								// label.push(parseInt(informasi[a].tanggal));
-								inf_val.push(parseInt(informasi[a].total));
-								ketemu = true;
-								break;
-							}
-						}
-
-						// ketemu = false;
-						for(var b in ac)
-						{
-							if(i==ac[b].tanggal)
-							{
-								ac_val.push(parseInt(ac[b].total));
-								ketemu = true;
-								break;
-							}
-						}
-
-						// ketemu = false;
-						for(var c in putusan)
-						{
-							if(i==putusan[c].tanggal)
-							{
-								pts_val.push(parseInt(putusan[c].total));
-								ketemu = true;
-								break;
-							}
-						}
-
-						// ketemu = false;
-						for(var d in penetapan)
-						{
-							if(i==penetapan[d].tanggal)
-							{
-								pnt_val.push(parseInt(penetapan[d].total));
-								ketemu = true;
-								break;
-							}
-						}
-
-						// ketemu = false;
-						for(var e in pendaftaran)
-						{
-							if(i==pendaftaran[e].tanggal)
-							{
-								daftar_val.push(parseInt(pendaftaran[e].total));
-								ketemu = true;
-								break;
-							}
-						}
-						// if(!ketemu)
-						// {
-						// 	label.push(i);
-						// 	inf_val.push(0)
-						// 	ac_val.push(0);
-						// 	pts_val.push(0);
-						// 	pnt_val.push(0);
-						// 	daftar_val.push(0);
-						// }
 					}
 
 					// bar

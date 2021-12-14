@@ -7,6 +7,7 @@
 ### [Fix]
 - Statistik
 - Nama pihak yang menggunakan gelar
+- Cetak laporan garis tabel tidak muncul
 
 ## [2.2.1]
 ### [Changed]
