@@ -271,7 +271,8 @@ class M_pendaftaran extends CI_Model
 	public function getStatistik()
 	{
 		$bulan = date('n');
-		$statement = "SELECT COUNT(id) as total, DATE_FORMAT(tanggal_pendaftaran,'%e') AS tanggal FROM pendaftaran WHERE MONTH(tanggal_pendaftaran) = '$bulan' GROUP BY tanggal_pendaftaran";
+		$tahun = date('Y');
+		$statement = "SELECT COUNT(id) as total, DATE_FORMAT(tanggal_pendaftaran,'%e') AS tanggal FROM pendaftaran WHERE MONTH(tanggal_pendaftaran) = '$bulan' AND YEAR(tanggal_pendaftaran) = '$tahun' GROUP BY tanggal_pendaftaran";
 		$query = $this->db->query($statement);
 		return $query->result();
 	}

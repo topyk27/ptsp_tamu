@@ -474,7 +474,8 @@ class M_produk extends CI_Model
 	public function getStatistik($pengambilan)
 	{
 		$bulan = date('n');
-		$statement = "SELECT COUNT(id) as total, DATE_FORMAT(tanggal,'%e') AS tanggal FROM produk WHERE MONTH(tanggal) = '$bulan' AND pengambilan='$pengambilan' GROUP BY tanggal";
+		$tahun = date('Y');
+		$statement = "SELECT COUNT(id) as total, DATE_FORMAT(tanggal,'%e') AS tanggal FROM produk WHERE MONTH(tanggal) = '$bulan' AND YEAR(tanggal) = '$tahun' AND pengambilan='$pengambilan' GROUP BY tanggal";
 		$query = $this->db->query($statement);
 		return $query->result();
 	}

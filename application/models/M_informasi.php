@@ -201,7 +201,8 @@ class M_informasi extends CI_Model
 	public function getStatistik()
 	{
 		$bulan = date('n');
-		$statement = "SELECT COUNT(id) as total, DATE_FORMAT(tanggal,'%e') AS tanggal FROM informasi WHERE MONTH(tanggal) = '$bulan' GROUP BY tanggal";
+		$tahun = date('Y');
+		$statement = "SELECT COUNT(id) as total, DATE_FORMAT(tanggal,'%e') AS tanggal FROM informasi WHERE MONTH(tanggal) = '$bulan' AND YEAR(tanggal) = '$tahun' GROUP BY tanggal";
 		$query = $this->db->query($statement);
 		return $query->result();
 	}
