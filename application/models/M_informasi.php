@@ -96,6 +96,7 @@ class M_informasi extends CI_Model
 	{
 		$this->db->from($this->table);
 		$this->db->order_by("tanggal", "desc");
+		$this->db->order_by("diperbarui", "desc");
 		// return $this->db->get()->result_array();
 		return $this->db->get()->result();
 	}

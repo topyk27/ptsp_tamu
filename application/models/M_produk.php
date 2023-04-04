@@ -213,6 +213,7 @@ class M_produk extends CI_Model
 		// $this->db->where('YEAR(tanggal)', date('Y'));
 		
 		$this->db->order_by('tanggal','desc');
+		$this->db->order_by('id','desc');
 		return $this->db->get()->result();
 	}
 
