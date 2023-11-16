@@ -48,4 +48,16 @@ class Welcome extends CI_Controller {
 			$this->load->view('about');
 		}
 	}
+
+	public function help()
+	{
+		if(!$this->M_user->isLogin())
+		{
+			redirect('user/login');
+		}
+		else
+		{
+			$this->load->view('help');
+		}
+	}
 }

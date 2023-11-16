@@ -304,7 +304,7 @@ $(document).ready(function () {
       {data : "informasi"},
       {data : "keterangan"},
       {"data" : null, "sortable" : false, render: function(data,type,row,meta){
-        return "<a href='<?php echo base_url('upload/informasi/')?>"+row['foto']+"' data-lightbox="+row['foto']+" data-title='"+row['nama']+"'><img src='<?php echo base_url('upload/informasi/')?>"+row['foto']+"' width='64' /></a>";
+        return "<a href='<?php echo base_url('upload/informasi/')?>"+row['foto']+"' data-lightbox="+row['foto']+" data-title='"+row['nama']+"'><img src='<?php echo base_url('upload/informasi/')?>"+row['foto']+"' width='64' loading='lazy' /></a>";
       }},
       // {data : null, sortable: false, render:function(data,type,row,meta){
       //   return "<a href='<?php echo base_url('informasi/ubah/') ?>"+row['id']+"' class='btn btn-warning'><i class='fas fa-edit'></i>Ubah</a><a href='#' class='btn btn-danger deleteButton'><i class='fas fa-trash'></i>Hapus</a>";

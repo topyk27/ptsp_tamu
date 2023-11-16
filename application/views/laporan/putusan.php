@@ -206,7 +206,7 @@
 			{data : "pihak"},
 			{data : "no_hp"},
 			{"data" : null, "sortable" : false, render: function(data,type,row,meta){
-				return "<a href='<?php echo base_url('upload/putusan/')?>"+row['foto']+"' data-lightbox="+row['foto']+" data-title='"+row['nama']+"'><img src='<?php echo base_url('upload/putusan/')?>"+row['foto']+"' width='64' /></a>";
+				return "<a href='<?php echo base_url('upload/putusan/')?>"+row['foto']+"' data-lightbox="+row['foto']+" data-title='"+row['nama']+"'><img src='<?php echo base_url('upload/putusan/')?>"+row['foto']+"' width='64' loading='lazy' /></a>";
 			}},
 			{data : "tanggal"},
 			],

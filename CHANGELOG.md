@@ -3,6 +3,13 @@
 ## [Unreleased]
 - Pendaftaran Surat Kuasa
 
+## [2.2.3]
+### [Fix]
+- Bug load image takes a long time
+
+## [Added]
+- Help page
+
 ## [2.2.2]
 ### [Fix]
 - Statistik

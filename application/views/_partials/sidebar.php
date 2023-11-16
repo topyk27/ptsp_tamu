@@ -113,6 +113,12 @@
     </li>
     <?php endif; ?>
     <li class="nav-item">
+      <a href="<?php echo base_url('help'); ?>" class="nav-link" id="sidebar_help">
+        <i class="nav-icon fas fa-question"></i>
+        <p>Help</p>
+      </a>
+    </li>
+    <li class="nav-item">
       <a href="<?php echo base_url('about'); ?>" class="nav-link" id="sidebar_about">
         <i class="nav-icon fas fa-info-circle"></i>
         <p>About</p>

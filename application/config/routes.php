@@ -53,6 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = 'error_cuy';
 $route['translate_uri_dashes'] = FALSE;
 $route['about'] = 'welcome/about';
+$route['help'] = 'welcome/help';
 $route['produk/ac/manual'] = 'produk/manual_ac';
 $route['produk/penetapan/manual'] = 'produk/manual_penetapan';
 $route['produk/putusan/manual'] = 'produk/manual_putusan';

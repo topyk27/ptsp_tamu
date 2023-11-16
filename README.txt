@@ -50,7 +50,7 @@ chrome://flags/#unsafely-treat-insecure-origin-as-secure
 
 ## Frequently Asked Questions
 - Upload foto gagal atau tidak masuk?
->Ubah permission untuk folder `aset/img` dan `upload` menjadi 777 biar yakin
+>Ubah permission untuk folder `asset/img` dan `upload` menjadi 777 biar yakin
 ---
 
 ## Contributing
