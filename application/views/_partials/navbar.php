@@ -59,7 +59,7 @@
             <a href="<?php echo(base_url('user/logout')); ?>" class="btn btn-success btn-block" style="color:#FFF;">Keluar</a>
           </div>
           <div class="col-6">
-            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Batal
+            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Batal</button>
           </div>
         </div>
       </div>
